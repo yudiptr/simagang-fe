@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useSnackbar } from 'notistack';
+import Link from 'next/link'; // Import Link from next/link
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -182,9 +183,9 @@ const Login: React.FC = () => {
         </form>
         <p>
           Belum Terdaftar?{' '}
-          <a href="/register" style={{ textDecoration: 'none', color: 'blue' }}>
-            Buat Akun
-          </a>
+          <Link href="/register">
+            <a style={{ textDecoration: 'none', color: 'blue' }}>Buat Akun</a>
+          </Link>
         </p>
       </div>
     </div>
