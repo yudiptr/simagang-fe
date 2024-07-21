@@ -3,14 +3,16 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useSnackbar } from 'notistack';
 
-const Login: React.FC = () => {
+const Register: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [validationError, setValidationError] = useState<string | null>(null);
+  
+  const router = useRouter(); // Initialize useRouter
+
   const { enqueueSnackbar } = useSnackbar(); // Hook to display notifications
 
-  const router = useRouter(); // Initialize useRouter
 
   // Function to validate username and password
   const validateInputs = () => {
@@ -34,17 +36,15 @@ const Login: React.FC = () => {
     }
 
     try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_LOCAL_URL}/auth/login`, {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_LOCAL_URL}/auth/register`, {
         username,
         password,
       });
-      localStorage.setItem('at', response.data.data.access_token);
-      enqueueSnackbar('Login success!', { variant: 'success' });
-      // Redirect to the main page upon successful login
-      router.push('/main');
+      enqueueSnackbar('Registration successful! Please log in.', { variant: 'success' });
+      router.push('/login');
     } catch (error) {
       if (axios.isAxiosError(error) && error.response?.status === 400) {
-        setError('Wrong username or password.');
+        setError('Username has been used.');
       } else {
         setError('An unexpected error occurred. Please try again.');
       }
@@ -146,11 +146,21 @@ const Login: React.FC = () => {
           margin-top: 10px;
           font-weight: bold;
         }
+
+        .redirect-button {
+          margin-top: 15px;
+          color: #4caf50;
+          cursor: pointer;
+          text-decoration: underline;
+          background: none;
+          border: none;
+          font-size: 16px;
+        }
       `}</style>
 
       <div className="main">
         <h1>MAGANG KAI DAOP 4</h1>
-        <h3>Masukkan data Anda</h3>
+        <h3>Daftarkan data Anda</h3>
         <form>
           <label htmlFor="first">Username:</label>
           <input
@@ -174,21 +184,18 @@ const Login: React.FC = () => {
 
           <div className="wrap">
             <button type="button" onClick={solve}>
-              Login
+              Register
             </button>
           </div>
           {validationError && <div className="validation-error">{validationError}</div>}
           {error && <div className="error-message">{error}</div>}
         </form>
-        <p>
-          Belum Terdaftar?{' '}
-          <a href="/register" style={{ textDecoration: 'none', color: 'blue' }}>
-            Buat Akun
-          </a>
-        </p>
+        <button className="redirect-button" onClick={() => router.push('/login')}>
+          Already have an account? Login
+        </button>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Register;
