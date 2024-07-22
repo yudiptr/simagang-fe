@@ -35,7 +35,7 @@ const Login: React.FC = () => {
     }
 
     try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_LOCAL_URL}/auth/login`, {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKED_URL}/auth/login`, {
         username,
         password,
       });
