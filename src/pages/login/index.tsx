@@ -54,7 +54,7 @@ const Login: React.FC = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-200">
-      <div className="bg-white rounded-lg shadow-lg p-10 w-96 text-center">
+      <div className="bg-white rounded-2xl shadow-lg p-8 w-96 text-center">
         <h1 className="text-green-600 text-2xl mb-4">MAGANG KAI DAOP 4</h1>
         <h3 className="mb-6">Masukkan data Anda</h3>
         <form>

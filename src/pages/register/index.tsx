@@ -8,13 +8,10 @@ const Register: React.FC = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [validationError, setValidationError] = useState<string | null>(null);
-  
-  const router = useRouter(); // Initialize useRouter
 
-  const { enqueueSnackbar } = useSnackbar(); // Hook to display notifications
+  const router = useRouter();
+  const { enqueueSnackbar } = useSnackbar();
 
-
-  // Function to validate username and password
   const validateInputs = () => {
     if (username.length <= 6) {
       return 'Username must be more than 6 characters.';
@@ -26,8 +23,8 @@ const Register: React.FC = () => {
   };
 
   const solve = async () => {
-    setError(null); // Reset error before each attempt
-    setValidationError(null); // Reset validation error before each attempt
+    setError(null);
+    setValidationError(null);
 
     const validationError = validateInputs();
     if (validationError) {
@@ -36,7 +33,7 @@ const Register: React.FC = () => {
     }
 
     try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/register`, {
+      await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/register`, {
         username,
         password,
       });
@@ -52,145 +49,51 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div className='min-h-screen min-w-screen flex flex-col items-center justify-center'>
-      <style jsx>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-
-        * {
-          margin: 0;
-          padding: 0;
-          outline: none;
-          border: none;
-          text-decoration: none;
-          box-sizing: border-box;
-          font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-          background: rgb(226, 226, 226);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-family: sans-serif;
-          line-height: 1.5;
-          min-height: 100vh;
-          flex-direction: column;
-          margin: 0;
-        }
-
-        .main {
-          background-color: #fff;
-          border-radius: 15px;
-          box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-          padding: 10px 20px;
-          transition: transform 0.2s;
-          width: 500px;
-          text-align: center;
-        }
-
-        h1 {
-          color: #4caf50;
-        }
-
-        label {
-          display: block;
-          width: 100%;
-          margin-top: 10px;
-          margin-bottom: 5px;
-          text-align: left;
-          color: #555;
-          font-weight: bold;
-        }
-
-        input {
-          display: block;
-          width: 100%;
-          margin-bottom: 15px;
-          padding: 10px;
-          box-sizing: border-box;
-          border: 1px solid #ddd;
-          border-radius: 5px;
-        }
-
-        button {
-          padding: 15px;
-          border-radius: 10px;
-          margin-top: 15px;
-          margin-bottom: 15px;
-          border: none;
-          color: white;
-          cursor: pointer;
-          background-color: #4caf50;
-          width: 100%;
-          font-size: 16px;
-        }
-
-        .wrap {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        a {
-          text-decoration: none;
-        }
-
-        .error-message {
-          color: red;
-          margin-top: 10px;
-          font-weight: bold;
-        }
-
-        .validation-error {
-          color: orange;
-          margin-top: 10px;
-          font-weight: bold;
-        }
-
-        .redirect-button {
-          margin-top: 15px;
-          color: #4caf50;
-          cursor: pointer;
-          text-decoration: underline;
-          background: none;
-          border: none;
-          font-size: 16px;
-        }
-      `}</style>
-
-      <div className="main">
-        <h1>MAGANG KAI DAOP 4</h1>
-        <h3>Daftarkan data Anda</h3>
+    <div className="min-h-screen min-w-screen flex flex-col items-center justify-center bg-gray-200">
+      <div className="bg-white rounded-2xl shadow-lg p-8 w-96 text-center">
+        <h1 className="text-green-600 text-2xl mb-4">MAGANG KAI DAOP 4</h1>
+        <h3 className="mb-6">Daftarkan data Anda</h3>
         <form>
-          <label htmlFor="first">Username:</label>
-          <input
-            type="text"
-            id="first"
-            name="first"
-            placeholder="Masukkan Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Masukkan Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
+          <div className="mb-4">
+            <label htmlFor="username" className="block text-left font-semibold mb-2">Username:</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Masukkan Username"
+              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="password" className="block text-left font-semibold mb-2">Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Masukkan Password"
+              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
           <div className="wrap">
-            <button type="button" onClick={solve}>
+            <button
+              type="button"
+              className="w-full py-3 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition duration-200"
+              onClick={solve}
+            >
               Register
             </button>
           </div>
-          {validationError && <div className="validation-error">{validationError}</div>}
-          {error && <div className="error-message">{error}</div>}
+          {validationError && <div className="text-orange-500 mt-4 font-semibold">{validationError}</div>}
+          {error && <div className="text-red-500 mt-4 font-semibold">{error}</div>}
         </form>
-        <button className="redirect-button" onClick={() => router.push('/login')}>
+        <button
+          className="mt-6 text-green-600 font-semibold underline hover:text-green-700 transition duration-200"
+          onClick={() => router.push('/login')}
+        >
           Already have an account? Login
         </button>
       </div>
