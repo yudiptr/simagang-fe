@@ -36,7 +36,7 @@ const Register: React.FC = () => {
     }
 
     try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_LOCAL_URL}/auth/register`, {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/register`, {
         username,
         password,
       });
