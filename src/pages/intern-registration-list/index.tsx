@@ -31,7 +31,7 @@ const Index: React.FC = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {[
+                  {[ 
                     { name: 'Muhammad Abdul', date: '03-24-22', duration: '2 Bulan', status: 'Ditolak' },
                     { name: 'Cristiano Ronaldo', date: '03-24-22', duration: '4 Bulan', status: 'Diterima' },
                     { name: 'Lionel Messi', date: '03-24-22', duration: '4 Bulan', status: 'Diproses' },
