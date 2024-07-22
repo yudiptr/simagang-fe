@@ -1,19 +1,25 @@
 import React from 'react';
-import { FaUserCog } from 'react-icons/fa';
+import { FaUserEdit } from 'react-icons/fa';
 import AuthHoc from '@/components/hoc/authHoc';
 import { Navbar } from '@/components';
 
 const Index: React.FC = () => {
   return (
-    <div className="flex min-h-screen">
-      <div className='flex'>
-          <Navbar/>
-          <main className="flex-1 p-6">
-            <div className="flex justify-between items-center mb-6">
-              <FaUserCog className="text-2xl text-gray-600" />
-            </div>
-            <h1 className="text-center text-2xl font-bold mb-4">Status Permohonan</h1>
-            <div className="bg-white p-4 rounded-lg shadow-md">
+    <div className="min-h-screen min-w-screen flex">
+      <Navbar />
+      <section className="flex-1 p-10">
+        <div className="relative mb-10">
+          <div className="absolute top-0 right-0 mt-4 mr-4">
+            <FaUserEdit className="text-2xl text-gray-600" />
+          </div>
+          <div className="flex flex-col items-center">
+            <h1 className="text-3xl font-bold">Status Permohonan</h1>
+          </div>
+
+
+          <main className="flex-1 p-6 flex flex-col items-center">
+              
+            <div className="bg-white p-4 rounded-lg shadow-md w-full max-w-4xl">
               <table className="min-w-full bg-white border border-gray-200 rounded-lg">
                 <thead>
                   <tr className="bg-green-500 text-white">
@@ -45,8 +51,8 @@ const Index: React.FC = () => {
               </table>
             </div>
           </main>
-      </div>
-      
+        </div>
+      </section>
     </div>
   );
 };
