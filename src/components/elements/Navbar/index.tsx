@@ -26,7 +26,7 @@ export const Navbar: React.FC = () => {
               </Link>
               </li>
               <li>
-              <Link href="/daftar" className="flex items-center p-2 text-gray-600 hover:bg-gray-200 group">
+              <Link href="/intern-registration" className="flex items-center p-2 text-gray-600 hover:bg-gray-200 group">
                   <FaSignInAlt className="text-2xl flex-shrink-0" /> {/* Ensures fixed size */}
                   <span className="ml-4 text-transparent group-hover:text-black transition-opacity duration-500">Daftar Magang</span>
               </Link>

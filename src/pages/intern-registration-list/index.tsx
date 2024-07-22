@@ -14,7 +14,7 @@ const Index: React.FC = () => {
           </div>
           <div className="flex flex-col items-center">
             <h1 className="text-3xl font-bold">Status Permohonan</h1>
-          </div>
+        </div>
 
 
           <main className="flex-1 p-6 flex flex-col items-center">
