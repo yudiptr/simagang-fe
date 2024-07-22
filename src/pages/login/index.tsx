@@ -183,8 +183,8 @@ const Login: React.FC = () => {
         </form>
         <p>
           Belum Terdaftar?{' '}
-          <Link href="/register">
-            <a style={{ textDecoration: 'none', color: 'blue' }}>Buat Akun</a>
+          <Link className=' text-blue-700' href="/register">
+            Buat Akun
           </Link>
         </p>
       </div>
