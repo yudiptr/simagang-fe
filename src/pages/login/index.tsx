@@ -42,7 +42,7 @@ const Login: React.FC = () => {
       localStorage.setItem('at', response.data.data.access_token);
       enqueueSnackbar('Login success!', { variant: 'success' });
       // Redirect to the main page upon successful login
-      router.push('/main');
+      router.push('/');
     } catch (error) {
       if (axios.isAxiosError(error) && error.response?.status === 400) {
         setError('Wrong username or password.');
