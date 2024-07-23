@@ -1,8 +1,9 @@
 import React from "react";
 import Image from 'next/image';
-import { FaHome, FaUsers, FaSignInAlt, FaNewspaper, FaLaptopHouse, FaCog, FaSignOutAlt } from 'react-icons/fa';
+import { FaHome, FaUsers, FaSignInAlt, FaNewspaper, FaLaptopHouse, FaCog, FaSignOutAlt, FaAviato, FaPeopleArrows } from 'react-icons/fa';
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { FaOrcid } from "react-icons/fa6";
 export const Navbar: React.FC = () => {
     const router = useRouter();
 
@@ -14,9 +15,15 @@ export const Navbar: React.FC = () => {
           </div>
           <ul className=''>
               <li>
-              <Link href="/main" className="flex items-center p-2 text-gray-600 hover:bg-gray-200 group">
+              <Link href="/" className="flex items-center p-2 text-gray-600 hover:bg-gray-200 group">
                   <FaHome className="text-2xl flex-shrink-0" /> {/* Ensures fixed size */}
                   <span className="ml-4 text-transparent group-hover:text-black transition-opacity duration-500">Beranda</span>
+              </Link>
+              </li>
+              <li>
+              <Link href="/division" className="flex items-center p-2 text-gray-600 hover:bg-gray-200 group">
+                  <FaPeopleArrows className="text-2xl flex-shrink-0" /> {/* Ensures fixed size */}
+                  <span className="ml-4 text-transparent group-hover:text-black transition-opacity duration-500">Divisi Magang</span>
               </Link>
               </li>
               <li>
