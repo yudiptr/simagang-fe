@@ -1,6 +1,6 @@
 import React from "react";
 import Image from 'next/image';
-import { FaHome, FaUsers, FaSignInAlt, FaNewspaper, FaLaptopHouse, FaCog, FaSignOutAlt, FaAviato, FaPeopleArrows } from 'react-icons/fa';
+import { FaHome, FaUsers, FaSignInAlt, FaNewspaper, FaLaptopHouse, FaCog, FaSignOutAlt, FaAviato, FaPeopleArrows, FaUserEdit } from 'react-icons/fa';
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FaOrcid } from "react-icons/fa6";
@@ -59,10 +59,18 @@ export const Navbar: React.FC = () => {
               <li className="absolute bottom-0 w-full">
               <div onClick={
                 () => {
+                    router.replace('/profile')
+                }
+              } className="flex items-center p-2 text-gray-600 hover:bg-gray-200 group cursor-pointer">
+                  <FaUserEdit className="text-2xl flex-shrink-0" /> {/* Ensures fixed size */}
+                  <span className="ml-4 text-transparent group-hover:text-black transition-opacity duration-500">Edit Profile</span>
+              </div>
+              <div onClick={
+                () => {
                     localStorage.removeItem('at')
                     router.replace('/login')
                 }
-              } className="flex items-center p-2 text-gray-600 hover:bg-gray-200 group">
+              } className="flex items-center p-2 text-gray-600 hover:bg-gray-200 group cursor-pointer">
                   <FaSignOutAlt className="text-2xl flex-shrink-0" /> {/* Ensures fixed size */}
                   <span className="ml-4 text-transparent group-hover:text-black transition-opacity duration-500">Log out</span>
               </div>

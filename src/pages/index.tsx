@@ -9,9 +9,6 @@ const Home: React.FC = () => {
       <Navbar />
       <section className="flex-1 p-10">
           <div className="relative mb-10">
-            <div className="absolute top-0 right-0 mt-4 mr-4">
-              <FaUserEdit className="text-2xl text-gray-600" />
-            </div>
             <div className="flex flex-col items-center">
               <h1 className="text-3xl font-bold">Selamat Datang!</h1>
               <p>Daftar Magang PT. Kereta Api Indonesia Daerah Operasi 4 Semarang</p>

@@ -108,7 +108,6 @@ const Index: React.FC = () => {
                 </div>
               )}
             </div>
-            <FaUserCog className="text-2xl text-gray-600" />
           </div>
           <div className="flex flex-col items-center">
             <h1 className="text-3xl font-bold">Kuota Magang</h1>

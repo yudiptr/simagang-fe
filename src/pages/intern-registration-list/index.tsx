@@ -9,14 +9,9 @@ const Index: React.FC = () => {
       <Navbar />
       <section className="flex-1 p-10">
         <div className="relative mb-10">
-          <div className="absolute top-0 right-0 mt-4 mr-4">
-            <FaUserEdit className="text-2xl text-gray-600" />
-          </div>
           <div className="flex flex-col items-center">
             <h1 className="text-3xl font-bold">Status Permohonan</h1>
-        </div>
-
-
+          </div>
           <main className="flex-1 p-6 flex flex-col items-center">
               
             <div className="bg-white p-4 rounded-lg shadow-md w-full max-w-4xl">

@@ -142,9 +142,6 @@ const Register: React.FC = () => {
 
       <section className="flex-1 p-10">
         <div className="relative mb-10">
-          <div className="absolute top-0 right-0 mt-4 mr-4">
-            <FaUserEdit className="text-2xl text-gray-600" />
-          </div>
           <div className="flex flex-col items-center">
             <i className="fas fa-user-cog text-3xl text-gray-600"></i>
             <h1 className="text-3xl font-bold mt-4">Daftar Magang</h1>
