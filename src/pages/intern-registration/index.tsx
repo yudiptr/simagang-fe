@@ -5,6 +5,9 @@ import axios from 'axios';
 import { FaUserEdit } from 'react-icons/fa';
 import { Navbar } from '@/components';
 import { useSnackbar } from 'notistack'; // Import useSnackbar from notistack
+import UserHoc from '@/components/hoc/userHoc';
+import AdminHoc from '@/components/hoc/adminHoc';
+import AuthHoc from '@/components/hoc/authHoc';
 
 const Register: React.FC = () => {
   const router = useRouter();
@@ -13,6 +16,7 @@ const Register: React.FC = () => {
   const [divisions, setDivisions] = useState<{ id: number; division_name: string }[]>([]);
   const [durations, setDurations] = useState<string[]>([]);
   const [quotas, setQuotas] = useState<Record<string, Record<string, number>>>({});
+  const [loading, setLoading] = useState(false); // Loading state
 
   const watchedDivisionName = watch('division_id');
 
@@ -53,17 +57,18 @@ const Register: React.FC = () => {
   }, [watchedDivisionName, quotas, divisions, setValue]);
 
   const onSubmit = async (data: any) => {
+    setLoading(true); // Start loading
     try {
       // Define a type for the file types
       type FileTypes = 'cv' | 'cover_letter' | 'student_card' | 'photo' | 'proposal';
-  
+
       // Create FormData object
       const formData = new FormData();
-  
+
       // Append non-file form data
       formData.append('division_id', data.division_id);
       formData.append('intern_duration', data.intern_duration);
-  
+
       // Define the file objects with explicit types
       const files: Record<FileTypes, File | undefined> = {
         cv: data.cv[0],
@@ -72,7 +77,7 @@ const Register: React.FC = () => {
         photo: data.photo[0],
         proposal: data.proposal[0]
       };
-  
+
       // Define the file types mapping
       const fileTypes: Record<FileTypes, string> = {
         cv: 'pdf',
@@ -81,35 +86,35 @@ const Register: React.FC = () => {
         photo: 'png',
         proposal: 'pdf'
       };
-  
+
       // Append files to FormData
       for (const [key, file] of Object.entries(files) as [FileTypes, File | undefined][]) {
         if (file) {
           if (validateFile(file, fileTypes[key])) {
             formData.append(key, file);
           } else {
+            setLoading(false); // Stop loading if file validation fails
             return; // If file validation fails, stop the submission
           }
         }
       }
-  
+
       // Submit FormData using axios
       const token = localStorage.getItem('at'); // Retrieve token from local storage
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
-      console.log(headers)
       const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/intern/register`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           ...headers
         }
       });
-  
+
       if (response.data.code === 200) {
         // Handle successful response
         console.log('Registration successful:', response.data);
         // Optionally redirect or reset the form
         reset();
-        enqueueSnackbar('Registration Success. Please try again.', { variant: 'success' });
+        enqueueSnackbar('Registration Success.', { variant: 'success' });
       } else {
         // Handle error response
         enqueueSnackbar('Registration failed. Please try again.', { variant: 'error' });
@@ -117,14 +122,15 @@ const Register: React.FC = () => {
     } catch (error) {
       console.error('Error during registration:', error);
       enqueueSnackbar('An unexpected error occurred. Please try again.', { variant: 'error' });
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
-  
-  
+
   const validateFile = (file: File, fileType: string) => {
     const maxSize = 3 * 1024 * 1024; // 3 MB
     const validType = fileType === 'png' ? 'image/png' : 'application/pdf';
-    
+
     if (file.size > maxSize) {
       enqueueSnackbar('File size exceeds 3 MB.', { variant: 'error' });
       return false;
@@ -139,7 +145,6 @@ const Register: React.FC = () => {
   return (
     <div className="min-h-screen min-w-screen flex">
       <Navbar />
-
       <section className="flex-1 p-10">
         <div className="relative mb-10">
           <div className="flex flex-col items-center">
@@ -151,80 +156,88 @@ const Register: React.FC = () => {
 
         <main className="flex p-8 justify-center">
           <div className="bg-white shadow-lg rounded-lg p-8 w-1/2">
-            <form onSubmit={handleSubmit(onSubmit)}>
-              {/* Division Dropdown */}
-              <div className="mb-4">
-                <label htmlFor="division_id" className="block text-sm font-medium text-gray-700">Divisi</label>
-                <select
-                  id="division_id"
-                  {...register('division_id')}
-                  className="w-full p-2 mt-1 border border-gray-300 rounded-md"
-                  required
-                >
-                  <option value="">Pilih...</option>
-                  {divisions.map(division => (
-                    <option key={division.id} value={division.id}>
-                      {division.division_name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Duration Dropdown */}
-              <div className="mb-4">
-                <label htmlFor="intern_duration" className="block text-sm font-medium text-gray-700">Durasi</label>
-                <select
-                  id="intern_duration"
-                  {...register('intern_duration')}
-                  className="w-full p-2 mt-1 border border-gray-300 rounded-md"
-                  required
-                  value={watch('intern_duration')} // Control selected value
-                >
-                  <option value="">Pilih...</option>
-                  {durations.map(duration => (
-                    <option key={duration} value={duration}>
-                      {duration}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {/* File Inputs */}
-              {[
-                { id: 'cv', label: 'CV', type: 'file', accept: '.pdf', placeholder: 'Upload PDF file, max 3MB' },
-                { id: 'cover_letter', label: 'Surat Pengantar Magang', type: 'file', accept: '.pdf', placeholder: 'Upload PDF file, max 3MB' },
-                { id: 'student_card', label: 'KTM', type: 'file', accept: '.pdf', placeholder: 'Upload PDF file, max 3MB' },
-                { id: 'photo', label: 'Pas Foto', type: 'file', accept: '.png', placeholder: 'Upload PNG file, max 3MB' },
-                { id: 'proposal', label: 'Proposal Magang', type: 'file', accept: '.pdf', placeholder: 'Upload PDF file, max 3MB' },
-              ].map(({ id, label, type, accept, placeholder }) => (
-                <div key={id} className="mb-4">
-                  <label htmlFor={id} className="block text-sm font-medium text-gray-700">
-                    {label}
-                  </label>
-                  <input
-                    type={type}
-                    id={id}
-                    accept={accept}
-                    placeholder={placeholder}
-                    {...register(id, {
-                      required: true,
-                    })}
-                    className="w-full p-2 mt-1 border border-gray-300 rounded-md"
-                    onChange={(e) => {
-                      const file = e.target.files?.[0];
-                      if (file && !validateFile(file, accept.slice(1))) {
-                        e.target.value = ''; // Clear the input if file validation fails
-                      }
-                    }}
-                  />
-                  <p className="text-sm text-gray-500">{placeholder}</p>
+            {loading ? (
+              <div className="flex justify-center items-center">
+                <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
+                  <span className="visually-hidden">Loading...</span>
                 </div>
-              ))}
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit(onSubmit)}>
+                {/* Division Dropdown */}
+                <div className="mb-4">
+                  <label htmlFor="division_id" className="block text-sm font-medium text-gray-700">Divisi</label>
+                  <select
+                    id="division_id"
+                    {...register('division_id')}
+                    className="w-full p-2 mt-1 border border-gray-300 rounded-md"
+                    required
+                  >
+                    <option value="">Pilih...</option>
+                    {divisions.map(division => (
+                      <option key={division.id} value={division.id}>
+                        {division.division_name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
 
-              <button type="submit" className="w-full p-2 mt-4 font-semibold text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors">
-                Daftar
-              </button>
-            </form>
+                {/* Duration Dropdown */}
+                <div className="mb-4">
+                  <label htmlFor="intern_duration" className="block text-sm font-medium text-gray-700">Durasi</label>
+                  <select
+                    id="intern_duration"
+                    {...register('intern_duration')}
+                    className="w-full p-2 mt-1 border border-gray-300 rounded-md"
+                    required
+                    value={watch('intern_duration')} // Control selected value
+                  >
+                    <option value="">Pilih...</option>
+                    {durations.map(duration => (
+                      <option key={duration} value={duration}>
+                        {duration}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* File Inputs */}
+                {[
+                  { id: 'cv', label: 'CV', type: 'file', accept: '.pdf', placeholder: 'Upload PDF file, max 3MB' },
+                  { id: 'cover_letter', label: 'Surat Pengantar Magang', type: 'file', accept: '.pdf', placeholder: 'Upload PDF file, max 3MB' },
+                  { id: 'student_card', label: 'KTM', type: 'file', accept: '.pdf', placeholder: 'Upload PDF file, max 3MB' },
+                  { id: 'photo', label: 'Pas Foto', type: 'file', accept: '.png', placeholder: 'Upload PNG file, max 3MB' },
+                  { id: 'proposal', label: 'Proposal Magang', type: 'file', accept: '.pdf', placeholder: 'Upload PDF file, max 3MB' },
+                ].map(({ id, label, type, accept, placeholder }) => (
+                  <div key={id} className="mb-4">
+                    <label htmlFor={id} className="block text-sm font-medium text-gray-700">
+                      {label}
+                    </label>
+                    <input
+                      type={type}
+                      id={id}
+                      accept={accept}
+                      placeholder={placeholder}
+                      {...register(id, {
+                        required: true,
+                      })}
+                      className="w-full p-2 mt-1 border border-gray-300 rounded-md"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file && !validateFile(file, accept.slice(1))) {
+                          e.target.value = ''; // Clear the input if file validation fails
+                        }
+                      }}
+                    />
+                    <p className="text-sm text-gray-500">{placeholder}</p>
+                  </div>
+                ))}
+
+                <button type="submit" className="w-full p-2 mt-4 font-semibold text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors">
+                  Daftar
+                </button>
+              </form>
+            )}
           </div>
         </main>
       </section>
@@ -232,4 +245,4 @@ const Register: React.FC = () => {
   );
 };
 
-export default Register;
+export default AuthHoc(Register);
