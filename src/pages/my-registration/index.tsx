@@ -31,7 +31,7 @@ const Index: React.FC = () => {
       const token = localStorage.getItem('at');
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
 
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/intern/registration-list`, { headers });
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/intern/my-registration`, { headers });
       if (response.data.code === 200) {
         setRegistrations(response.data.data);
       }
@@ -54,29 +54,6 @@ const Index: React.FC = () => {
     setSelectedRegistration(null);
   };
 
-  const handleBulkAccept = async () => {
-    try {
-      await axios.patch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/intern/accept`, { registration_ids: selectedRegistrations }, {
-        headers: { Authorization: `Bearer ${localStorage.getItem('at')}` }
-      });
-      setSelectedRegistrations([]);
-      fetchRegistrationList(); // Refresh the list
-    } catch (error) {
-      console.error('Error accepting registrations:', error);
-    }
-  };
-
-  const handleBulkReject = async () => {
-    try {
-      await axios.patch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/intern/reject`, { registration_ids: selectedRegistrations }, {
-        headers: { Authorization: `Bearer ${localStorage.getItem('at')}` }
-      });
-      setSelectedRegistrations([]);
-      fetchRegistrationList(); // Refresh the list
-    } catch (error) {
-      console.error('Error rejecting registrations:', error);
-    }
-  };
 
   const handleCheckboxChange = (registrationId: number) => {
     setSelectedRegistrations((prevSelected) =>
@@ -108,43 +85,9 @@ const Index: React.FC = () => {
           </div>
           <main className="flex-1 p-6 flex flex-col items-center">
             <div className="bg-white p-4 rounded-lg shadow-md w-full max-w-4xl">
-              <div className="flex justify-between mb-4">
-                <div>
-                  <button 
-                    onClick={handleBulkAccept} 
-                    className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 mr-2"
-                    disabled={selectedRegistrations.length === 0}
-                  >
-                    Accept Selected
-                  </button>
-                  <button 
-                    onClick={handleBulkReject} 
-                    className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
-                    disabled={selectedRegistrations.length === 0}
-                  >
-                    Reject Selected
-                  </button>
-                </div>
-                <div className="flex items-center">
-                  <input
-                    type="checkbox"
-                    checked={isAllSelected}
-                    onChange={handleSelectAllChange}
-                    className="mr-2"
-                  />
-                  <span>Select All</span>
-                </div>
-              </div>
               <table className="min-w-full bg-white border border-gray-200 rounded-lg">
                 <thead>
                   <tr className="bg-green-500 text-white">
-                    <th className="p-4 text-left">
-                      <input
-                        type="checkbox"
-                        checked={isAllSelected}
-                        onChange={handleSelectAllChange}
-                      />
-                    </th>
                     <th className="p-4 text-left">Nama Lengkap</th>
                     <th className="p-4 text-left">Divisi</th>
                     <th className="p-4 text-left">Tanggal Daftar</th>
@@ -156,14 +99,6 @@ const Index: React.FC = () => {
                 <tbody>
                   {registrations.map((entry, index) => (
                     <tr key={index} className={`${index % 2 === 0 ? 'bg-gray-100' : 'bg-white'} border-b border-gray-200`}>
-                      <td className="p-4">
-                        <input
-                          type="checkbox"
-                          checked={selectedRegistrations.includes(entry.id)}
-                          onChange={() => handleCheckboxChange(entry.id)}
-                          disabled={entry.status !== 'Diproses'}
-                        />
-                      </td>
                       <td className="p-4">{entry.fullname}</td>
                       <td className="p-4">{entry.division_name}</td>
                       <td className="p-4">{new Date(entry.created_at).toLocaleDateString()}</td>
