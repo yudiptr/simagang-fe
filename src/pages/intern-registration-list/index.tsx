@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Navbar } from '@/components';
-import AuthHoc from '@/components/hoc/authHoc';
+import AdminHoc from '@/components/hoc/authHoc';
 import Modal from '@/components/elements/Modal';
 
 interface Registration {
@@ -197,4 +197,4 @@ const Index: React.FC = () => {
   );
 };
 
-export default AuthHoc(Index);
+export default AdminHoc(Index);

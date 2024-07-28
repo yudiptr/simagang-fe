@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { FaEdit, FaUserCog } from 'react-icons/fa';
+import { FaEdit } from 'react-icons/fa';
 import AuthHoc from '@/components/hoc/authHoc';
 import { Navbar } from '@/components/';
 import { useSnackbar } from 'notistack';
+import { parseUser } from '@/utils';
 
 interface QuotaData {
   [key: string]: {
@@ -25,8 +26,17 @@ const Index: React.FC = () => {
   const [quota, setQuota] = useState<number | string>('');
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const { enqueueSnackbar } = useSnackbar();
+  const [role, setRole] = useState<string | null>(null);
 
   useEffect(() => {
+    const getUserRole = async () => {
+      const user = await parseUser();
+      if (user) {
+        setRole(user.role);
+      }
+    };
+
+    getUserRole();
     fetchQuotaData();
     fetchDivisionData();
   }, []);
@@ -43,7 +53,6 @@ const Index: React.FC = () => {
   const fetchDivisionData = async () => {
     try {
       const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/intern/division`);
-      // Map the data into a dictionary with id as key
       setDivisionData(response.data.data.reduce((acc: DivisionData, division: any) => {
         acc[division.id] = {
           id: division.id,
@@ -97,18 +106,20 @@ const Index: React.FC = () => {
       <Navbar />
       <section className="flex-1 p-10">
         <div className="relative mb-10">
-          <div className="absolute top-0 right-0 mt-4 mr-4 flex gap-4">
-            <div className="relative">
-              <FaEdit className="text-2xl text-gray-600 cursor-pointer" onClick={handleEditClick} />
-              {showMenu && (
-                <div className="absolute top-full right-0 mt-2 w-40 bg-white border border-gray-200 shadow-lg rounded-md">
-                  <ul>
-                    <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer" onClick={handleSetQuotaClick}>Set Quota</li>
-                  </ul>
-                </div>
-              )}
+          {role === 'Admin' && (
+            <div className="absolute top-0 right-0 mt-4 mr-4 flex gap-4">
+              <div className="relative">
+                <FaEdit className="text-2xl text-gray-600 cursor-pointer" onClick={handleEditClick} />
+                {showMenu && (
+                  <div className="absolute top-full right-0 mt-2 w-40 bg-white border border-gray-200 shadow-lg rounded-md">
+                    <ul>
+                      <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer" onClick={handleSetQuotaClick}>Set Quota</li>
+                    </ul>
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
+          )}
           <div className="flex flex-col items-center">
             <h1 className="text-3xl font-bold">Kuota Magang</h1>
           </div>

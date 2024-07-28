@@ -4,6 +4,7 @@ import { FaEdit, FaUserCog } from 'react-icons/fa';
 import AuthHoc from '@/components/hoc/authHoc';
 import { Navbar } from '@/components/';
 import { useSnackbar } from 'notistack'; // Import useSnackbar from notistack
+import { parseUser } from '@/utils'; // Adjust the import path to the actual location of your parseUser function
 
 interface DivisionData {
   [key: string]: any; // Adjust according to the structure of the division data
@@ -16,8 +17,17 @@ const Index: React.FC = () => {
   const [newDivision, setNewDivision] = useState<string>('');
   const [modalAnimation, setModalAnimation] = useState<'enter' | 'leave' | 'none'>('none');
   const { enqueueSnackbar } = useSnackbar();
+  const [role, setRole] = useState<string | null>(null);
 
   useEffect(() => {
+    const getUserRole = async () => {
+      const user = await parseUser();
+      if (user) {
+        setRole(user.role);
+      }
+    };
+
+    getUserRole();
     fetchDivisionData();
   }, []);
 
@@ -80,18 +90,20 @@ const Index: React.FC = () => {
       <Navbar />
       <section className="flex-1 p-10">
         <div className="relative mb-10">
-          <div className="absolute top-0 right-0 mt-4 mr-4 flex gap-4">
-            <div className="relative">
-              <FaEdit className="text-2xl text-gray-600 cursor-pointer" onClick={handleEditClick} />
-              {showMenu && (
-                <div className="absolute top-full right-0 mt-2 w-40 bg-white border border-gray-200 shadow-lg rounded-md">
-                  <ul>
-                    <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer" onClick={handleAddDivisionClick}>Add Division</li>
-                  </ul>
-                </div>
-              )}
+          {role === 'Admin' && (
+            <div className="absolute top-0 right-0 mt-4 mr-4 flex gap-4">
+              <div className="relative">
+                <FaEdit className="text-2xl text-gray-600 cursor-pointer" onClick={handleEditClick} />
+                {showMenu && (
+                  <div className="absolute top-full right-0 mt-2 w-40 bg-white border border-gray-200 shadow-lg rounded-md">
+                    <ul>
+                      <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer" onClick={handleAddDivisionClick}>Add Division</li>
+                    </ul>
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
+          )}
           <div className="flex flex-col items-center">
             <h1 className="text-3xl font-bold">Divisi Magang</h1>
           </div>

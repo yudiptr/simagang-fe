@@ -19,6 +19,8 @@ const UserHoc = <P extends object>(WrappedComponent: ComponentType<P>) => {
             router.replace('/login');
           } else if (userData.role !== 'USER') {
             router.replace('/');
+          } else if (userData?.role == "USER" && userData?.is_complete == false) {
+            router.replace('/profile')
           }
         } catch (error) {
           console.error('Error checking authorization:', error);

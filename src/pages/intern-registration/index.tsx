@@ -4,10 +4,9 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { FaUserEdit } from 'react-icons/fa';
 import { Navbar } from '@/components';
-import { useSnackbar } from 'notistack'; // Import useSnackbar from notistack
-import UserHoc from '@/components/hoc/userHoc';
+import { useSnackbar } from 'notistack'; 
 import AdminHoc from '@/components/hoc/adminHoc';
-import AuthHoc from '@/components/hoc/authHoc';
+import UserHoc from '@/components/hoc/authHoc';
 
 const Register: React.FC = () => {
   const router = useRouter();
@@ -245,4 +244,4 @@ const Register: React.FC = () => {
   );
 };
 
-export default AuthHoc(Register);
+export default UserHoc(Register);

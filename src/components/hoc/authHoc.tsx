@@ -18,6 +18,9 @@ const AuthHoc = <P extends object>(WrappedComponent: ComponentType<P>) => {
           if (!userData) {
             router.replace('/login');
           } 
+          else if (userData?.role == "USER" && userData?.is_complete == false) {
+            router.replace('/profile')
+          }
         } catch (error) {
           console.error('Error checking authorization:', error);
         }

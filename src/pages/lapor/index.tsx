@@ -5,7 +5,7 @@ import axios from 'axios';
 import { FaUserEdit } from 'react-icons/fa';
 import { Navbar } from '@/components';
 import { useSnackbar } from 'notistack';
-import AuthHoc from '@/components/hoc/authHoc';
+import UseHoc from '@/components/hoc/authHoc';
 
 const Report: React.FC = () => {
   const router = useRouter();
@@ -223,4 +223,4 @@ const Report: React.FC = () => {
   );
 };
 
-export default AuthHoc(Report);
+export default UseHoc(Report);

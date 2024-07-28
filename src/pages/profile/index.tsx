@@ -35,6 +35,7 @@ const EditProfile: React.FC = () => {
         const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/profile`, {
           headers
         });
+    
         setProfileData(response.data.data); // Extracting `data` from response
         reset(response.data.data); // Setting form values with the fetched data
       } catch (error) {
@@ -58,6 +59,11 @@ const EditProfile: React.FC = () => {
   
       if (response.data.code === 200) {
         enqueueSnackbar('Profile updated successfully!', { variant: 'success' });
+        
+        if (response.data.data.access_token){
+          console.log(response.data.data)
+          localStorage.setItem('at', response.data.data.access_token)
+        }
       } else {
         enqueueSnackbar('Error updating profile. Please try again.', { variant: 'error' });
       }
