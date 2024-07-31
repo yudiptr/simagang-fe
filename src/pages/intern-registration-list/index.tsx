@@ -86,14 +86,14 @@ const Index: React.FC = () => {
     );
   };
 
-  const isAllSelected = registrations.filter(r => r.status === 'Diproses').length === selectedRegistrations.length;
+  const isAllSelected = registrations.filter(r => r.status !== '').length === selectedRegistrations.length;
 
   const handleSelectAllChange = () => {
     if (isAllSelected) {
       setSelectedRegistrations([]);
     } else {
       setSelectedRegistrations(
-        registrations.filter((r) => r.status === 'Diproses').map((r) => r.id)
+        registrations.filter((r) => r.status !== '').map((r) => r.id)
       );
     }
   };
@@ -161,7 +161,6 @@ const Index: React.FC = () => {
                           type="checkbox"
                           checked={selectedRegistrations.includes(entry.id)}
                           onChange={() => handleCheckboxChange(entry.id)}
-                          disabled={entry.status !== 'Diproses'}
                         />
                       </td>
                       <td className="p-4">{entry.fullname}</td>

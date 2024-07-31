@@ -3,11 +3,11 @@ import axios from 'axios';
 import { FaEdit, FaUserCog } from 'react-icons/fa';
 import AuthHoc from '@/components/hoc/authHoc';
 import { Navbar } from '@/components/';
-import { useSnackbar } from 'notistack'; // Import useSnackbar from notistack
-import { parseUser } from '@/utils'; // Adjust the import path to the actual location of your parseUser function
+import { useSnackbar } from 'notistack';
+import { parseUser } from '@/utils';
 
 interface DivisionData {
-  [key: string]: any; // Adjust according to the structure of the division data
+  [key: string]: any;
 }
 
 const Index: React.FC = () => {
@@ -62,7 +62,7 @@ const Index: React.FC = () => {
     setTimeout(() => {
       setShowModal(false);
       setNewDivision('');
-    }, 300); // Matches the duration of the animation
+    }, 300);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -75,13 +75,30 @@ const Index: React.FC = () => {
       await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/intern/division`, {
         division_name: newDivision
       });
-      // Refetch data to update the list with the new division
       await fetchDivisionData();
       enqueueSnackbar('Division added successfully!', { variant: 'success' });
-      handleModalClose(); // Close the modal after successful submission
+      handleModalClose();
     } catch (error) {
       enqueueSnackbar('Error adding division: ' + (error as Error).message, { variant: 'error' });
       console.error('Error adding division:', error);
+    }
+  };
+
+  const handleDeleteDivision = async (divisionId: string) => {
+    try {
+      console.log(divisionId)
+      // await axios.delete(`${process.env.NEXT_PUBLIC_BACKEND_URL}/intern/division/delete`, {
+      //   data: { id: divisionId }
+      // });
+      // setDivisionData(prevData => {
+      //   const newData = { ...prevData };
+      //   delete newData[divisionId];
+      //   return newData;
+      // });
+      enqueueSnackbar('Division deleted successfully!', { variant: 'success' });
+    } catch (error) {
+      enqueueSnackbar('Error deleting division: ' + (error as Error).message, { variant: 'error' });
+      console.error('Error deleting division:', error);
     }
   };
 
@@ -113,8 +130,17 @@ const Index: React.FC = () => {
           {divisionData ? (
             Object.entries(divisionData).map(([division, details]) => (
               <div key={division} className="bg-white p-4 rounded-2xl shadow-md flex flex-col gap-4">
-                <h3 className="text-xl font-bold text-center mb-4">{details.division_name}</h3>
-                {/* Render division details here if applicable */}
+                <div className="flex justify-between items-center">
+                  <h3 className="text-xl font-bold text-center mb-4">{details.division_name}</h3>
+                  {role === 'Admin' && (
+                    <button 
+                      onClick={() => handleDeleteDivision(details.id)} 
+                      className="text-white font-bold bg-red-600 p-4 rounded-xl hover:bg-red-800"
+                    >
+                      Delete
+                    </button>
+                  )}
+                </div>
               </div>
             ))
           ) : (
@@ -123,7 +149,6 @@ const Index: React.FC = () => {
         </div>
       </section>
 
-      {/* Modal for Adding Division */}
       {(showModal || modalAnimation === 'leave') && (
         <div
           className={`fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 transition-opacity duration-300 ease-in-out ${modalAnimation === 'enter' ? 'opacity-100' : 'opacity-0'} ${!showModal ? 'pointer-events-none' : ''}`}
@@ -141,7 +166,7 @@ const Index: React.FC = () => {
                 onChange={handleInputChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md"
                 required
-                minLength={6} // Add minLength attribute
+                minLength={6}
                 placeholder="Enter division name (min 6 characters)"
               />
               <div className="mt-4 flex gap-4">

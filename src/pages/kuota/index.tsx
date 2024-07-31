@@ -135,7 +135,7 @@ const Index: React.FC = () => {
                     <div className="flex items-center justify-center align-middle">
                       <div className="flex flex-col items-center justify-center h-20 bg-slate-200 p-4 w-1/2 rounded-full shadow-md">
                         <span className="block text-xl font-semibold flex items-center">{duration}</span>
-                        <span>{count}</span>
+                        <span>{count} orang</span>
                       </div>
                     </div>
                   </div>
