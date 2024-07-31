@@ -72,8 +72,15 @@ const Index: React.FC = () => {
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      const token = localStorage.getItem('at');
+      const header = token ? { Authorization: `Bearer ${token}` } : {};
       await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/intern/division`, {
         division_name: newDivision
+      }, {
+        headers : {
+          'Content-Type': 'application/json',
+          ...header
+        }
       });
       await fetchDivisionData();
       enqueueSnackbar('Division added successfully!', { variant: 'success' });
@@ -86,15 +93,16 @@ const Index: React.FC = () => {
 
   const handleDeleteDivision = async (divisionId: string) => {
     try {
-      console.log(divisionId)
-      // await axios.delete(`${process.env.NEXT_PUBLIC_BACKEND_URL}/intern/division/delete`, {
-      //   data: { id: divisionId }
-      // });
-      // setDivisionData(prevData => {
-      //   const newData = { ...prevData };
-      //   delete newData[divisionId];
-      //   return newData;
-      // });
+      const token = localStorage.getItem('at');
+      const header = token ? { Authorization: `Bearer ${token}` } : {};
+      await axios.patch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/intern/division/delete`, {
+        division_id : divisionId
+      }, {
+        headers: {
+          ...header
+        }
+      });
+      await fetchDivisionData();
       enqueueSnackbar('Division deleted successfully!', { variant: 'success' });
     } catch (error) {
       enqueueSnackbar('Error deleting division: ' + (error as Error).message, { variant: 'error' });
