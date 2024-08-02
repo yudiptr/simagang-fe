@@ -54,7 +54,7 @@ const Index: React.FC = () => {
     try {
       const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/intern/division`);
       setDivisionData(response.data.data.reduce((acc: DivisionData, division: any) => {
-        acc[division.id] = {
+        acc[division.division_name] = {
           id: division.id,
           division_name: division.division_name,
         };
@@ -101,6 +101,33 @@ const Index: React.FC = () => {
     }
   };
 
+  const handleDeleteQuota = async (divisionName: string, duration: string) => {
+    const division = divisionData ? divisionData[divisionName] : null;
+    if (!division) {
+      enqueueSnackbar('Division not found', { variant: 'error' });
+      return;
+    }
+
+    try {
+      const token = localStorage.getItem('at');
+      const header = token ? { Authorization: `Bearer ${token}` } : {};
+      await axios.patch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/intern/quota/delete`, {
+        division_id: division.id,
+        duration,
+      }, {
+        headers : {
+        ...header
+        }
+      });
+      // Refetch data to update the list after deletion
+      await fetchQuotaData();
+      enqueueSnackbar('Quota deleted successfully!', { variant: 'success' });
+    } catch (error) {
+      enqueueSnackbar('Error deleting quota: ' + (error as Error).message, { variant: 'error' });
+      console.error('Error deleting quota:', error);
+    }
+  };
+
   return (
     <div className="min-h-screen flex">
       <Navbar />
@@ -137,6 +164,12 @@ const Index: React.FC = () => {
                         <span className="block text-xl font-semibold flex items-center">{duration}</span>
                         <span>{count} orang</span>
                       </div>
+                      <button
+                        className="ml-4 px-3 py-1 bg-red-500 text-white rounded-md"
+                        onClick={() => handleDeleteQuota(department, duration)}
+                      >
+                        Delete
+                      </button>
                     </div>
                   </div>
                 ))}
