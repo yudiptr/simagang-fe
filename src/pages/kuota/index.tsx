@@ -164,12 +164,15 @@ const Index: React.FC = () => {
                         <span className="block text-xl font-semibold flex items-center">{duration}</span>
                         <span>{count} orang</span>
                       </div>
+                      {
+                        role == "Admin" && 
                       <button
                         className="ml-4 px-3 py-1 bg-red-500 text-white rounded-md"
                         onClick={() => handleDeleteQuota(department, duration)}
                       >
                         Delete
                       </button>
+                      }
                     </div>
                   </div>
                 ))}

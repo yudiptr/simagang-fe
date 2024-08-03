@@ -51,7 +51,7 @@ const Register: React.FC = () => {
   return (
     <div className="min-h-screen min-w-screen flex flex-col items-center justify-center bg-gray-200">
       <div className="bg-white rounded-2xl shadow-lg p-8 w-96 text-center">
-        <h1 className="text-green-600 text-2xl mb-4">MAGANG KAI DAOP 4</h1>
+        <h1 className="text-[#d86c16] text-2xl mb-4">MAGANG KAI DAOP 4</h1>
         <h3 className="mb-6">Daftarkan data Anda</h3>
         <form>
           <div className="mb-4">
@@ -61,7 +61,7 @@ const Register: React.FC = () => {
               id="username"
               name="username"
               placeholder="Masukkan Username"
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
@@ -73,7 +73,7 @@ const Register: React.FC = () => {
               id="password"
               name="password"
               placeholder="Masukkan Password"
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -81,7 +81,7 @@ const Register: React.FC = () => {
           <div className="wrap">
             <button
               type="button"
-              className="w-full py-3 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 transition duration-200"
+            className="w-full py-3 bg-[#d86c16] text-white font-semibold rounded-md hover:bg-[#442c19] transition duration-200"
               onClick={solve}
             >
               Register
@@ -91,10 +91,10 @@ const Register: React.FC = () => {
           {error && <div className="text-red-500 mt-4 font-semibold">{error}</div>}
         </form>
         <button
-          className="mt-6 text-green-600 font-semibold underline hover:text-green-700 transition duration-200"
+          className="mt-6 text-[#d86c16] font-semibold underline hover:text-[#442c19] transition duration-200"
           onClick={() => router.push('/login')}
         >
-          Already have an account? Login
+          Sudah Punya Akun? Login
         </button>
       </div>
     </div>

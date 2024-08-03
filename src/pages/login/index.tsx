@@ -55,7 +55,7 @@ const Login: React.FC = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-200">
       <div className="bg-white rounded-2xl shadow-lg p-8 w-96 text-center">
-        <h1 className="text-green-600 text-2xl mb-4">MAGANG KAI DAOP 4</h1>
+        <h1 className="text-[#d86c16] text-2xl mb-4">MAGANG KAI DAOP 4</h1>
         <h3 className="mb-6">Masukkan data Anda</h3>
         <form>
           <label htmlFor="first" className="block text-left mb-2 font-bold text-gray-600">
@@ -88,7 +88,7 @@ const Login: React.FC = () => {
             <button
               type="button"
               onClick={solve}
-              className="w-full bg-green-600 text-white p-3 rounded-lg hover:bg-green-700"
+              className="w-full bg-[#d86c16] text-white p-3 rounded-lg hover:bg-[#4b2f1b]"
             >
               Login
             </button>

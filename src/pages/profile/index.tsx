@@ -58,18 +58,18 @@ const EditProfile: React.FC = () => {
       });
   
       if (response.data.code === 200) {
-        enqueueSnackbar('Profile updated successfully!', { variant: 'success' });
+        enqueueSnackbar('Profil berhasil diperbarui!', { variant: 'success' });
         
         if (response.data.data.access_token){
           console.log(response.data.data)
           localStorage.setItem('at', response.data.data.access_token)
         }
       } else {
-        enqueueSnackbar('Error updating profile. Please try again.', { variant: 'error' });
+        enqueueSnackbar('Gagal memperbarui profile, silakan coba lagi!', { variant: 'error' });
       }
     } catch (error) {
       console.error('Error updating profile:', error);
-      enqueueSnackbar('An unexpected error occurred. Please try again.', { variant: 'error' });
+      enqueueSnackbar('Terdapat error internal, silakan coba lagi!', { variant: 'error' });
     }
   };
   
@@ -81,7 +81,7 @@ const EditProfile: React.FC = () => {
       <section className="flex-1 p-10">
         <div className="relative mb-10">
           <div className="flex flex-col items-center">
-            <h1 className="text-3xl font-bold mt-4">Edit Profile</h1>
+            <h1 className="text-3xl font-bold mt-4">Edit Profil</h1>
           </div>
         </div>
 
@@ -90,7 +90,7 @@ const EditProfile: React.FC = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
               {/* Full Name */}
               <div className="mb-4">
-                <label htmlFor="fullname" className="block text-sm font-medium text-gray-700">Full Name</label>
+                <label htmlFor="fullname" className="block text-sm font-medium text-gray-700">Nama Lengkap</label>
                 <input
                   id="fullname"
                   type="text"
@@ -102,7 +102,7 @@ const EditProfile: React.FC = () => {
 
               {/* Student Number */}
               <div className="mb-4">
-                <label htmlFor="student_number" className="block text-sm font-medium text-gray-700">Student Number</label>
+                <label htmlFor="student_number" className="block text-sm font-medium text-gray-700">Nomor Mahasiswa</label>
                 <input
                   id="student_number"
                   type="text"
@@ -127,7 +127,7 @@ const EditProfile: React.FC = () => {
 
               {/* Phone Number */}
               <div className="mb-4">
-                <label htmlFor="phone_number" className="block text-sm font-medium text-gray-700">Phone Number</label>
+                <label htmlFor="phone_number" className="block text-sm font-medium text-gray-700">Nomor Telepon</label>
                 <input
                   id="phone_number"
                   type="text"
@@ -139,7 +139,7 @@ const EditProfile: React.FC = () => {
 
               {/* University */}
               <div className="mb-4">
-                <label htmlFor="university" className="block text-sm font-medium text-gray-700">University</label>
+                <label htmlFor="university" className="block text-sm font-medium text-gray-700">Universitas</label>
                 <input
                   id="university"
                   type="text"
@@ -163,7 +163,7 @@ const EditProfile: React.FC = () => {
 
               {/* Gender */}
               <div className="mb-4">
-                <label htmlFor="gender" className="block text-sm font-medium text-gray-700">Gender</label>
+                <label htmlFor="gender" className="block text-sm font-medium text-gray-700">Jenis Kelamin</label>
                 <select
                   id="gender"
                   {...register('gender')}
@@ -191,9 +191,9 @@ const EditProfile: React.FC = () => {
 
               <button
                 type="submit"
-                className="w-full p-2 mt-4 font-semibold text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors"
+                className="w-full p-2 mt-4 font-semibold text-white bg-[#d86c16] rounded-md hover:bg-[#6e4421] transition-colors"
               >
-                Update Profile
+                Perbarui Profile
               </button>
             </form>
           </div>
