@@ -115,14 +115,14 @@ const Index: React.FC = () => {
                     className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 mr-2"
                     disabled={selectedRegistrations.length === 0}
                   >
-                    Accept Selected
+                    Terima
                   </button>
                   <button 
                     onClick={handleBulkReject} 
                     className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
                     disabled={selectedRegistrations.length === 0}
                   >
-                    Reject Selected
+                    Tolak
                   </button>
                 </div>
                 <div className="flex items-center">
@@ -132,7 +132,7 @@ const Index: React.FC = () => {
                     onChange={handleSelectAllChange}
                     className="mr-2"
                   />
-                  <span>Select All</span>
+                  <span>Pilih Semua</span>
                 </div>
               </div>
               <table className="min-w-full bg-white border border-gray-200 rounded-lg">
@@ -173,7 +173,7 @@ const Index: React.FC = () => {
                           onClick={() => handleViewClick(entry)}
                           className="px-4 py-2 border border-green-500 rounded-md hover:bg-green-500 hover:text-white transition-colors"
                         >
-                          View
+                          Lihat
                         </button>
                       </td>
                     </tr>

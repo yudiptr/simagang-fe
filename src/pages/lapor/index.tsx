@@ -127,7 +127,7 @@ const Report: React.FC = () => {
     <div className="min-h-screen min-w-screen flex">
       <Navbar />
       <section className="flex-1 p-10">
-        <div className="relative mb-10">
+        <div className="relative ">
           <div className="flex flex-col items-center">
             <FaUserEdit className="text-3xl text-gray-600" />
             <h1 className="text-3xl font-bold mt-4">Lapor Selesai Magang</h1>
@@ -211,7 +211,7 @@ const Report: React.FC = () => {
                   </div>
                 ))}
 
-                <button type="submit" className="w-full p-2 mt-4 font-semibold text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors">
+                <button type="submit" className="w-full p-2 mt-4 font-semibold text-white bg-[#d86c16] rounded-md hover:bg-[#442c19] transition-colors">
                   Lapor
                 </button>
               </form>

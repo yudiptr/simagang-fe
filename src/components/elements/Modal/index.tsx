@@ -73,7 +73,7 @@ const Modal: React.FC<ModalProps> = ({ registration, onClose }) => {
                 >
                     X
                 </button>
-                <h2 className="text-2xl font-bold mb-4">Details</h2>
+                <h2 className="text-2xl font-bold mb-4">Detail</h2>
                 <div className="space-y-4">
                     <div className="flex justify-between items-center">
                         <span>CV:</span>
@@ -85,7 +85,7 @@ const Modal: React.FC<ModalProps> = ({ registration, onClose }) => {
                         </button>
                     </div>
                     <div className="flex justify-between items-center">
-                        <span>Cover Letter:</span>
+                        <span>Surat Pengantar Magang:</span>
                         <button
                             onClick={() => handleDownload(registration.cover_letter)}
                             className="text-blue-500"
@@ -94,7 +94,7 @@ const Modal: React.FC<ModalProps> = ({ registration, onClose }) => {
                         </button>
                     </div>
                     <div className="flex justify-between items-center">
-                        <span>Student Card:</span>
+                        <span>KTM:</span>
                         <button
                             onClick={() => handleDownload(registration.student_card)}
                             className="text-blue-500"
@@ -103,7 +103,7 @@ const Modal: React.FC<ModalProps> = ({ registration, onClose }) => {
                         </button>
                     </div>
                     <div className="flex justify-between items-center">
-                        <span>Photo:</span>
+                        <span>Pas Foto:</span>
                         <button
                             onClick={() => handleDownload(registration.photo)}
                             className="text-blue-500"
@@ -112,7 +112,7 @@ const Modal: React.FC<ModalProps> = ({ registration, onClose }) => {
                         </button>
                     </div>
                     <div className="flex justify-between items-center">
-                        <span>Proposal:</span>
+                        <span>Proposal Magang:</span>
                         <button
                             onClick={() => handleDownload(registration.proposal)}
                             className="text-blue-500"

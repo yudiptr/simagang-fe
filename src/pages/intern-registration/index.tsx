@@ -109,11 +109,8 @@ const Register: React.FC = () => {
       });
 
       if (response.data.code === 200) {
-        // Handle successful response
-        console.log('Registration successful:', response.data);
-        // Optionally redirect or reset the form
         reset();
-        enqueueSnackbar('Registration Success.', { variant: 'success' });
+        enqueueSnackbar('Pendaftaran Berhasil.', { variant: 'success' });
       } else {
         // Handle error response
         enqueueSnackbar('Registration failed. Please try again.', { variant: 'error' });
@@ -145,7 +142,7 @@ const Register: React.FC = () => {
     <div className="min-h-screen min-w-screen flex">
       <Navbar />
       <section className="flex-1 p-10">
-        <div className="relative mb-10">
+        <div className="relative">
           <div className="flex flex-col items-center">
             <i className="fas fa-user-cog text-3xl text-gray-600"></i>
             <h1 className="text-3xl font-bold mt-4">Daftar Magang</h1>
@@ -232,7 +229,7 @@ const Register: React.FC = () => {
                   </div>
                 ))}
 
-                <button type="submit" className="w-full p-2 mt-4 font-semibold text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors">
+                <button type="submit" className="w-full p-2 mt-4 font-semibold text-white bg-[#d86c16] hover:bg-[#442c19] rounded-md transition-colors">
                   Daftar
                 </button>
               </form>

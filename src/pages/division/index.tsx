@@ -122,7 +122,7 @@ const Index: React.FC = () => {
                 {showMenu && (
                   <div className="absolute top-full right-0 mt-2 w-40 bg-white border border-gray-200 shadow-lg rounded-md">
                     <ul>
-                      <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer" onClick={handleAddDivisionClick}>Add Division</li>
+                      <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer" onClick={handleAddDivisionClick}>Tambah Divisi</li>
                     </ul>
                   </div>
                 )}
@@ -138,14 +138,14 @@ const Index: React.FC = () => {
           {divisionData ? (
             Object.entries(divisionData).map(([division, details]) => (
               <div key={division} className="bg-white p-4 rounded-2xl shadow-md flex flex-col gap-4">
-                <div className="flex justify-between items-center">
+                <div className="flex justify-center items-center">
                   <h3 className="text-xl font-bold text-center mb-4">{details.division_name}</h3>
                   {role === 'Admin' && (
                     <button 
                       onClick={() => handleDeleteDivision(details.id)} 
                       className="text-white font-bold bg-red-600 p-4 rounded-xl hover:bg-red-800"
                     >
-                      Delete
+                      Hapus
                     </button>
                   )}
                 </div>

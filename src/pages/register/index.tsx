@@ -81,7 +81,7 @@ const Register: React.FC = () => {
           <div className="wrap">
             <button
               type="button"
-            className="w-full py-3 bg-[#d86c16] text-white font-semibold rounded-md hover:bg-[#442c19] transition duration-200"
+            className="w-full py-3 bg-[#d86c16] hover:bg-[#442c19]  text-white font-semibold rounded-md transition duration-200"
               onClick={solve}
             >
               Register

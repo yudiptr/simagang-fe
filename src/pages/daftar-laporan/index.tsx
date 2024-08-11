@@ -69,7 +69,7 @@ const Index: React.FC = () => {
       <section className="flex-1 p-10">
         <div className="relative mb-10">
           <div className="flex flex-col items-center">
-            <h1 className="text-3xl font-bold">Status Permohonan</h1>
+            <h1 className="text-3xl font-bold">Rekap Peserta Magang</h1>
           </div>
           <main className="flex-1 p-6 flex flex-col items-center">
             <div className="bg-white p-4 rounded-lg shadow-md w-full max-w-4xl">
@@ -95,7 +95,7 @@ const Index: React.FC = () => {
                           onClick={() => handleDownload(report.intern_certification)}
                           className="px-4 py-2 border border-green-500 rounded-md hover:bg-green-500 hover:text-white transition-colors"
                         >
-                          Download
+                          Unduh
                         </button>
                       </td>
                     </tr>
