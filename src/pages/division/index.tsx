@@ -137,19 +137,20 @@ const Index: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {divisionData ? (
             Object.entries(divisionData).map(([division, details]) => (
-              <div key={division} className="bg-white p-4 rounded-2xl shadow-md flex flex-col gap-4">
+              <div key={division} className="bg-white p-4 rounded-2xl max-w-[500px] shadow-md flex flex-col gap-4 min-w-[250px]">
                 <div className="flex justify-center items-center">
-                  <h3 className="text-xl font-bold text-center mb-4">{details.division_name}</h3>
+                  <h3 className="text-xl flex justify-center font-bold text-center mb-4">{details.division_name}</h3>
                   {role === 'Admin' && (
                     <button 
                       onClick={() => handleDeleteDivision(details.id)} 
-                      className="text-white font-bold bg-red-600 p-4 rounded-xl hover:bg-red-800"
+                      className="text-white font-bold bg-red-600 p-2 rounded-xl hover:bg-red-800"
                     >
                       Hapus
                     </button>
                   )}
                 </div>
               </div>
+
             ))
           ) : (
             <div>Loading...</div>

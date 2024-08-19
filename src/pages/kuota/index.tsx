@@ -155,28 +155,29 @@ const Index: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {quotaData ? (
             Object.entries(quotaData).map(([department, quotas]) => (
-              <div key={department} className="bg-white p-4 rounded-2xl shadow-md flex flex-col gap-4">
+              <div key={department} className="bg-white p-4 rounded-2xl shadow-md flex flex-col gap-4 min-w-[350px]">
                 <h3 className="text-xl font-bold text-center mb-4">{department}</h3>
                 {Object.entries(quotas).map(([duration, count], index) => (
                   <div key={index}>
-                    <div className="flex items-center justify-center align-middle">
-                      <div className="flex flex-col items-center justify-center h-20 bg-slate-200 p-4 w-1/2 rounded-full shadow-md">
-                        <span className="block text-xl font-semibold flex items-center">{duration}</span>
+                    <div className="flex flex-col md:flex-row items-center justify-center md:justify-between align-middle">
+                      <div className="flex flex-col items-center justify-center h-20 bg-slate-200 p-4 w-full rounded-full shadow-md">
+                        <span className="block text-xl font-semibold">{duration}</span>
                         <span>{count} orang</span>
                       </div>
-                      {
-                        role == "Admin" && 
-                      <button
-                        className="ml-4 px-3 py-1 bg-red-500 text-white rounded-md"
-                        onClick={() => handleDeleteQuota(department, duration)}
-                      >
-                        Hapus
-                      </button>
-                      }
+                      {role === "Admin" && (
+                        <button
+                          className="mt-4 md:mt-0 md:ml-4 px-3 py-1 bg-red-500 text-white rounded-md"
+                          onClick={() => handleDeleteQuota(department, duration)}
+                        >
+                          Hapus
+                        </button>
+                      )}
                     </div>
                   </div>
                 ))}
               </div>
+            
+
             ))
           ) : (
             <div>Loading...</div>
