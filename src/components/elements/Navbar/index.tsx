@@ -22,7 +22,7 @@ export const Navbar: React.FC = () => {
     return (
         <nav className="sticky top-0 w-16 bg-white h-screen overflow-hidden transition-width duration-500 hover:w-60 group">
             <div className="flex items-center px-4 py-6">
-                <Image src="/kai.png" alt="Logo" width={45} height={45} className="rounded-full" />
+                <Image src="/LOGO.png" alt="Logo" width={80} height={80} className="rounded-full" />
                 <span className="font-bold text-lg ml-4 text-transparent transition-opacity duration-500 group-hover:text-black">Magang KAI DAOP 4</span>
             </div>
             <ul className='space-y-2'>
