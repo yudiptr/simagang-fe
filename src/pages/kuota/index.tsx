@@ -169,7 +169,7 @@ const Index: React.FC = () => {
                           className="mt-4 md:mt-0 md:ml-4 px-3 py-1 bg-red-500 text-white rounded-md"
                           onClick={() => handleDeleteQuota(department, duration)}
                         >
-                          Hapus
+                          Hapuss
                         </button>
                       )}
                     </div>
