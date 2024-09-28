@@ -129,8 +129,7 @@ const Report: React.FC = () => {
       <section className="flex-1 p-10">
         <div className="relative ">
           <div className="flex flex-col items-center">
-            <FaUserEdit className="text-3xl text-gray-600" />
-            <h1 className="text-3xl font-bold mt-4">Lapor Selesai Magang</h1>
+            <h1 className="text-3xl font-bold mt-4 text-blue-1000">Lapor Selesai Magang</h1>
             <p className="mt-2">Masukkan data magang Anda!</p>
           </div>
         </div>
@@ -146,11 +145,11 @@ const Report: React.FC = () => {
             ) : (
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="mb-4">
-                  <label htmlFor="division_id" className="block text-sm font-medium text-gray-700">Divisi</label>
+                  <label htmlFor="division_id" className="block text-sm font-semibold text-blue-1000">Divisi</label>
                   <select
                     id="division_id"
                     {...register('division_id')}
-                    className="w-full p-2 mt-1 border border-gray-300 rounded-md"
+                    className="w-full p-2 mt-1 border border-orange-80 rounded-md"
                     required
                   >
                     <option value="">Pilih...</option>
@@ -163,23 +162,23 @@ const Report: React.FC = () => {
                 </div>
 
                 <div className="mb-4">
-                  <label htmlFor="start_date" className="block text-sm font-medium text-gray-700">Start Date</label>
+                  <label htmlFor="start_date" className="block text-sm font-semibold text-blue-1000">Start Date</label>
                   <input
                     type="date"
                     id="start_date"
                     {...register('start_date')}
-                    className="w-full p-2 mt-1 border border-gray-300 rounded-md"
+                    className="w-full p-2 mt-1 border border-orange-80 rounded-md"
                     required
                   />
                 </div>
 
                 <div className="mb-4">
-                  <label htmlFor="end_date" className="block text-sm font-medium text-gray-700">End Date</label>
+                  <label htmlFor="end_date" className="block text-sm font-semibold text-blue-1000">End Date</label>
                   <input
                     type="date"
                     id="end_date"
                     {...register('end_date')}
-                    className="w-full p-2 mt-1 border border-gray-300 rounded-md"
+                    className="w-full p-2 mt-1 border border-orange-80 rounded-md"
                     required
                   />
                 </div>
@@ -188,7 +187,7 @@ const Report: React.FC = () => {
                   { id: 'intern_certificate', label: 'Sertifikat Magang', type: 'file', accept: '.pdf', placeholder: 'Upload PDF file, max 3MB' },
                 ].map(({ id, label, type, accept, placeholder }) => (
                   <div key={id} className="mb-4">
-                    <label htmlFor={id} className="block text-sm font-medium text-gray-700">
+                    <label htmlFor={id} className="block text-sm font-semibold text-blue-1000">
                       {label}
                     </label>
                     <input
@@ -199,7 +198,7 @@ const Report: React.FC = () => {
                       {...register(id, {
                         required: true,
                       })}
-                      className="w-full p-2 mt-1 border border-gray-300 rounded-md"
+                      className="w-full p-2 mt-1 border border-orange-1000 rounded-md"
                       onChange={(e) => {
                         const file = e.target.files?.[0];
                         if (file && !validateFile(file, accept.slice(1))) {
@@ -207,11 +206,11 @@ const Report: React.FC = () => {
                         }
                       }}
                     />
-                    <p className="text-sm text-gray-500">{placeholder}</p>
+                    <p className="text-sm text-orange-80">{placeholder}</p>
                   </div>
                 ))}
 
-                <button type="submit" className="w-full p-2 mt-4 font-semibold text-white bg-[#d86c16] rounded-md hover:bg-[#442c19] transition-colors">
+                <button type="submit" className="w-full p-2 mt-4 font-semibold text-white bg-orange-60 rounded-md hover:bg-orange-1000 transition-colors">
                   Lapor
                 </button>
               </form>

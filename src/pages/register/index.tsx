@@ -49,19 +49,25 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen min-w-screen flex flex-col items-center justify-center bg-gray-200">
-      <div className="bg-white rounded-2xl shadow-lg p-8 w-96 text-center">
-        <h1 className="text-[#d86c16] text-2xl mb-4">MAGANG KAI DAOP 4</h1>
-        <h3 className="mb-6">Daftarkan data Anda</h3>
+    <div
+      className="min-h-screen flex items-center bg-cover bg-center justify-end"
+      style={{ backgroundImage: "url('/bg-register.png')" }} 
+    >
+      <div className="bg-white rounded-2xl shadow-lg p-8 pl-12 pr-12 w-4/12 mr-36">
+        <h1 className="text-orange-1000 text-2xl mb-4 font-semibold">Welcome to</h1>
+        <h3 className="mb-6 text-blue-1000 text-2xl font-semibold">Sistem Penerimaan Magang
+        KAI DAOP 4 Semarang</h3>
         <form>
           <div className="mb-4">
-            <label htmlFor="username" className="block text-left font-semibold mb-2">Username:</label>
+          <label htmlFor="first" className="block text-left mb-2 font-bold text-black">
+            Username
+          </label>
             <input
               type="text"
               id="username"
               name="username"
               placeholder="Masukkan Username"
-            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2"
+            className="w-full px-3 py-2 border border-orange-1000 rounded-md focus:outline-none focus:ring-2"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
@@ -73,7 +79,7 @@ const Register: React.FC = () => {
               id="password"
               name="password"
               placeholder="Masukkan Password"
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2"
+              className="w-full px-3 py-2 border border-orange-1000 rounded-md focus:outline-none focus:ring-2"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -81,7 +87,7 @@ const Register: React.FC = () => {
           <div className="wrap">
             <button
               type="button"
-            className="w-full py-3 bg-[#d86c16] hover:bg-[#442c19]  text-white font-semibold rounded-md transition duration-200"
+              className="w-full bg-orange-60 text-white p-3 rounded-lg hover:bg-orange-1000"
               onClick={solve}
             >
               Register
@@ -91,10 +97,11 @@ const Register: React.FC = () => {
           {error && <div className="text-red-500 mt-4 font-semibold">{error}</div>}
         </form>
         <button
-          className="mt-6 text-[#d86c16] font-semibold underline hover:text-[#442c19] transition duration-200"
+          className="mt-6 text-black transition duration-200"
           onClick={() => router.push('/login')}
         >
-          Sudah Punya Akun? Login
+          Sudah Punya Akun? 
+          <span className='text-orange-60 hover:text-orange-1000 hover:cursor-pointer'> Masuk</span>
         </button>
       </div>
     </div>

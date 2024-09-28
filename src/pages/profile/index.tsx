@@ -81,7 +81,7 @@ const EditProfile: React.FC = () => {
       <section className="flex-1 p-10">
         <div className="relative">
           <div className="flex flex-col items-center">
-            <h1 className="text-3xl font-bold mt-4">Edit Profil</h1>
+            <h1 className="text-3xl font-bold mt-4 text-blue-1000">Edit Profil</h1>
             <span>Masukkan data lengkap Anda di sini</span>
           </div>
         </div>
@@ -91,84 +91,84 @@ const EditProfile: React.FC = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
               {/* Full Name */}
               <div className="mb-4">
-                <label htmlFor="fullname" className="block text-sm font-medium text-gray-700">Nama Lengkap</label>
+                <label htmlFor="fullname" className="block text-sm font-semibold text-blue-1000">Nama Lengkap</label>
                 <input
                   id="fullname"
                   type="text"
                   {...register('fullname')}
-                  className={`w-full p-2 mt-1 border ${errors.fullname ? 'border-red-500' : 'border-gray-300'} rounded-md`}
+                  className={`w-full p-2 mt-1 border ${errors.fullname ? 'border-red-500' : 'border-orange-1000'} rounded-md`}
                 />
                 {errors.fullname && <p className="text-red-500 text-sm">{errors.fullname.message}</p>}
               </div>
 
               {/* Student Number */}
               <div className="mb-4">
-                <label htmlFor="student_number" className="block text-sm font-medium text-gray-700">Nomor Mahasiswa</label>
+                <label htmlFor="student_number" className="block text-sm font-semibold text-blue-1000">Nomor Mahasiswa</label>
                 <input
                   id="student_number"
                   type="text"
                   {...register('student_number')}
-                  className={`w-full p-2 mt-1 border ${errors.student_number ? 'border-red-500' : 'border-gray-300'} rounded-md`}
+                  className={`w-full p-2 mt-1 border ${errors.student_number ? 'border-red-500' : 'border-orange-1000'} rounded-md`}
                 />
                 {errors.student_number && <p className="text-red-500 text-sm">{errors.student_number.message}</p>}
               </div>
 
               {/* IPK */}
               <div className="mb-4">
-                <label htmlFor="ipk" className="block text-sm font-medium text-gray-700">IPK</label>
+                <label htmlFor="ipk" className="block text-sm font-semibold text-blue-1000">IPK</label>
                 <input
                   id="ipk"
                   type="number"
                   step="0.1" // Allow decimal values
                   {...register('ipk')}
-                  className={`w-full p-2 mt-1 border ${errors.ipk ? 'border-red-500' : 'border-gray-300'} rounded-md`}
+                  className={`w-full p-2 mt-1 border ${errors.ipk ? 'border-red-500' : 'border-orange-1000'} rounded-md`}
                 />
                 {errors.ipk && <p className="text-red-500 text-sm">{errors.ipk.message}</p>}
               </div>
 
               {/* Phone Number */}
               <div className="mb-4">
-                <label htmlFor="phone_number" className="block text-sm font-medium text-gray-700">Nomor Telepon</label>
+                <label htmlFor="phone_number" className="block text-sm font-semibold text-blue-1000">Nomor Telepon</label>
                 <input
                   id="phone_number"
                   type="text"
                   {...register('phone_number')}
-                  className={`w-full p-2 mt-1 border ${errors.phone_number ? 'border-red-500' : 'border-gray-300'} rounded-md`}
+                  className={`w-full p-2 mt-1 border ${errors.phone_number ? 'border-red-500' : 'border-orange-1000'} rounded-md`}
                 />
                 {errors.phone_number && <p className="text-red-500 text-sm">{errors.phone_number.message}</p>}
               </div>
 
               {/* University */}
               <div className="mb-4">
-                <label htmlFor="university" className="block text-sm font-medium text-gray-700">Universitas</label>
+                <label htmlFor="university" className="block text-sm font-semibold text-blue-1000">Universitas</label>
                 <input
                   id="university"
                   type="text"
                   {...register('university')}
-                  className={`w-full p-2 mt-1 border ${errors.university ? 'border-red-500' : 'border-gray-300'} rounded-md`}
+                  className={`w-full p-2 mt-1 border ${errors.university ? 'border-red-500' : 'border-orange-1000'} rounded-md`}
                 />
                 {errors.university && <p className="text-red-500 text-sm">{errors.university.message}</p>}
               </div>
 
               {/* Semester */}
               <div className="mb-4">
-                <label htmlFor="semester" className="block text-sm font-medium text-gray-700">Semester</label>
+                <label htmlFor="semester" className="block text-sm font-semibold text-blue-1000">Semester</label>
                 <input
                   id="semester"
                   type="number"
                   {...register('semester')}
-                  className={`w-full p-2 mt-1 border ${errors.semester ? 'border-red-500' : 'border-gray-300'} rounded-md`}
+                  className={`w-full p-2 mt-1 border ${errors.semester ? 'border-red-500' : 'border-orange-1000'} rounded-md`}
                 />
                 {errors.semester && <p className="text-red-500 text-sm">{errors.semester.message}</p>}
               </div>
 
               {/* Gender */}
               <div className="mb-4">
-                <label htmlFor="gender" className="block text-sm font-medium text-gray-700">Jenis Kelamin</label>
+                <label htmlFor="gender" className="block text-sm font-semibold text-blue-1000">Jenis Kelamin</label>
                 <select
                   id="gender"
                   {...register('gender')}
-                  className={`w-full p-2 mt-1 border ${errors.gender ? 'border-red-500' : 'border-gray-300'} rounded-md`}
+                  className={`w-full p-2 mt-1 border ${errors.gender ? 'border-red-500' : 'border-orange-1000'} rounded-md`}
                 >
                   <option value="">Select...</option>
                   <option value="Laki - Laki">Laki - Laki</option>
@@ -180,19 +180,19 @@ const EditProfile: React.FC = () => {
 
               {/* Email */}
               <div className="mb-4">
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+                <label htmlFor="email" className="block text-sm ffont-semibold text-blue-1000">Email</label>
                 <input
                   id="email"
                   type="email"
                   {...register('email')}
-                  className={`w-full p-2 mt-1 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-md`}
+                  className={`w-full p-2 mt-1 border ${errors.email ? 'border-red-500' : 'border-orange-1000'} rounded-md`}
                 />
                 {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
               </div>
 
               <button
                 type="submit"
-                className="w-full p-2 mt-4 font-semibold text-white bg-[#d86c16] rounded-md hover:bg-[#6e4421] transition-colors"
+                className="w-full p-2 mt-4 font-semibold text-white bg-orange-60 rounded-md hover:bg-orange-1000 transition-colors"
               >
                 Perbarui Profile
               </button>

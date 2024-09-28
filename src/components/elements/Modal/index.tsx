@@ -64,60 +64,62 @@ const Modal: React.FC<ModalProps> = ({ registration, onClose }) => {
             onClick={handleOverlayClick}
         >
             <div
-                className="bg-white p-6 rounded-lg shadow-lg w-11/12 max-w-2xl relative"
+                className="bg-white p-6 rounded-lg shadow-lg relative pb-20 pr-8 pl-8"
                 ref={modalRef}
             >
-                <button
-                    onClick={onClose}
-                    className="absolute top-4 right-4 text-gray-600 hover:text-gray-900"
-                >
-                    X
-                </button>
-                <h2 className="text-2xl font-bold mb-4">Detail</h2>
+                <h2 className="text-2xl font-bold mb-4 text-blue-60">Detail</h2>
                 <div className="space-y-4">
-                    <div className="flex justify-between items-center">
-                        <span>CV:</span>
+                    <div className="flex items-center">
                         <button
                             onClick={() => handleDownload(registration.cv)}
-                            className="text-blue-500"
+                            className="text-white bg-orange-60 hover:bg-orange-1000 px-4 py-1 rounded-lg mr-4"
                         >
                             Download
                         </button>
+                        <span>CV</span>
                     </div>
-                    <div className="flex justify-between items-center">
-                        <span>Surat Pengantar Magang:</span>
+                    <div className="flex items-center">
                         <button
                             onClick={() => handleDownload(registration.cover_letter)}
-                            className="text-blue-500"
+                            className="text-white bg-orange-60 hover:bg-orange-1000 px-4 py-1 rounded-lg mr-4"
                         >
                             Download
                         </button>
+                        <span>Surat Pengantar Magang</span>
                     </div>
-                    <div className="flex justify-between items-center">
-                        <span>KTM:</span>
+                    <div className="flex items-center">
                         <button
                             onClick={() => handleDownload(registration.student_card)}
-                            className="text-blue-500"
+                            className="text-white bg-orange-60 hover:bg-orange-1000 px-4 py-1 rounded-lg mr-4"
                         >
                             Download
                         </button>
+                        <span>KTM</span>
                     </div>
-                    <div className="flex justify-between items-center">
-                        <span>Pas Foto:</span>
+                    <div className="flex items-center">
                         <button
                             onClick={() => handleDownload(registration.photo)}
-                            className="text-blue-500"
+                            className="text-white bg-orange-60 hover:bg-orange-1000 px-4 py-1 rounded-lg mr-4"
                         >
                             Download
                         </button>
+                        <span>Pas Foto</span>
                     </div>
-                    <div className="flex justify-between items-center">
-                        <span>Proposal Magang:</span>
+                    <div className="flex items-center">
                         <button
                             onClick={() => handleDownload(registration.proposal)}
-                            className="text-blue-500"
+                            className="text-white bg-orange-60 hover:bg-orange-1000 px-4 py-1 rounded-lg mr-4"
                         >
                             Download
+                        </button>
+                        <span>Proposal Magang</span>
+                    </div>
+                    <div className='w-full flex justify-center'>
+                        <button
+                            onClick={onClose}
+                            className="absolute text-gray-600 bg-blue-60 hover:bg-blue-1000 rounded-lg px-6 py-1 text-white justify-center flex items-center text-center mt-4"
+                        >
+                            Close
                         </button>
                     </div>
                 </div>

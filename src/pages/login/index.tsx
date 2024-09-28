@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useSnackbar } from 'notistack';
 import Link from 'next/link'; // Import Link from next/link
+import Image from 'next/image';
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -53,13 +54,19 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-200">
-      <div className="bg-white rounded-2xl shadow-lg p-8 w-96 text-center">
-        <h1 className="text-[#d86c16] text-2xl mb-4">MAGANG KAI DAOP 4</h1>
-        <h3 className="mb-6">Masukkan data Anda</h3>
+    <div
+      className="min-h-screen flex items-center bg-cover bg-center justify-end"
+      style={{ backgroundImage: "url('/bg-login.png')" }} 
+    >
+      <div className='flex-end justify-end'>
+      <div className="bg-white rounded-2xl shadow-lg p-8 pl-12 pr-12 w-9/12">
+        <h1 className="text-orange-1000 text-2xl mb-4 font-semibold">Welcome to</h1>
+        <h3 className="mb-6 text-blue-1000 text-2xl font-semibold">Sistem Penerimaan Magang
+        KAI DAOP 4 Semarang</h3>
+        
         <form>
-          <label htmlFor="first" className="block text-left mb-2 font-bold text-gray-600">
-            Username:
+          <label htmlFor="first" className="block text-left mb-2 font-bold text-black">
+            Username
           </label>
           <input
             type="text"
@@ -68,11 +75,11 @@ const Login: React.FC = () => {
             placeholder="Masukkan Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className="w-full mb-4 p-2 border border-gray-300 rounded"
+            className="w-full mb-4 p-1 border border-orange-1000 rounded"
           />
 
-          <label htmlFor="password" className="block text-left mb-2 font-bold text-gray-600">
-            Password:
+          <label htmlFor="password" className="block text-left mb-2 font-bold text-black">
+            Password
           </label>
           <input
             type="password"
@@ -81,14 +88,14 @@ const Login: React.FC = () => {
             placeholder="Masukkan Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full mb-4 p-2 border border-gray-300 rounded"
+            className="w-full mb-4 p-1 border border-orange-1000 rounded"
           />
 
           <div className="flex justify-center">
             <button
               type="button"
               onClick={solve}
-              className="w-full bg-[#d86c16] text-white p-3 rounded-lg hover:bg-[#4b2f1b]"
+              className="w-full bg-orange-60 text-white p-3 rounded-lg hover:bg-orange-1000"
             >
               Login
             </button>
@@ -99,11 +106,12 @@ const Login: React.FC = () => {
           {error && <div className="text-red-500 mt-4 font-bold">{error}</div>}
         </form>
         <p className="mt-4">
-          Belum Terdaftar?{' '}
-          <Link className="text-blue-700" href="/register">
-            Buat Akun
+          Belum punya akun?{' '}
+          <Link className="text-orange-60 hover:text-orange-1000 hover:cursor-pointer" href="/register">
+            Daftar Di sini
           </Link>
         </p>
+      </div>
       </div>
     </div>
   );

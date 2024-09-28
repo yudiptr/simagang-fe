@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '@/components/elements/Footer';
 import { Navbar } from '@/components';
 import AuthHoc from "@/components/hoc/authHoc";
 import { Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/material';
@@ -8,10 +9,11 @@ const Home: React.FC = () => {
   return (
     <div className="min-h-screen min-w-screen flex">
       <Navbar />
-      <section className="flex-1 p-10">
+      <section className="flex-1">
+        <div className='p-10'>
         <div className="relative mb-10">
           <div className="flex flex-col items-center">
-            <h1 className="text-3xl font-bold">Selamat Datang!</h1>
+            <h1 className="text-3xl font-bold text-blue-1000">Selamat Datang!</h1>
             <p>Daftar Magang PT. Kereta Api Indonesia Daerah Operasi 4 Semarang</p>
           </div>
         </div>
@@ -116,6 +118,10 @@ const Home: React.FC = () => {
             </AccordionDetails>
           </Accordion>
 
+        </div>
+        </div>
+        <div className='flex'>
+          <Footer/>
         </div>
       </section>
     </div>
