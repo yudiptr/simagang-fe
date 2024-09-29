@@ -4,7 +4,7 @@ import { FiPhone } from "react-icons/fi";
 
 const Footer: React.FC = () => {
     return (
-       <div className="bg-blue-1000 flex flex-col md:flex-row pb-4 lg:pl-16 lg:pr-48 px-12 md:px-1">
+       <div className="bg-blue-1000 md:w-full flex flex-col md:flex-row pb-4 lg:pl-36 lg:pr-48 px-12 md:px-1">
         <div className="md:absolute flex">
             <Image src="/kai3.png" alt="Logo KAI" width={145} height={50} className={'mt-6 mb-4 md:mb-0'} />
         </div>

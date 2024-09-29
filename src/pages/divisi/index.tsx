@@ -186,7 +186,8 @@ const Index: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex">
+    <div className="">
+      <div className="min-h-screen flex">
       <Navbar />
       <section className="flex-1 mt-20 md:mt-1">
         <div className='md:p-10 pr-4 pl-3'>
@@ -274,10 +275,11 @@ const Index: React.FC = () => {
       )}
         </div>
         </div>
-        <div>
-          <Footer />
-        </div>
       </section>
+      </div>
+      <div className='z-0'>
+          <Footer />
+      </div>
 
       {/* Modal for Setting Quota */}
       {modalVisible && (

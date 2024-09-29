@@ -7,7 +7,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const Home: React.FC = () => {
   return (
-    <div className="min-h-screen min-w-screen flex">
+    <div className="">
+      <div className="min-h-screen min-w-screen flex">
       <Navbar />
       <section className="flex-1 overflow-y-auto mt-16 md:mt-1">
         <div className='md:p-10 p-4'>
@@ -21,7 +22,7 @@ const Home: React.FC = () => {
         <div className="text-justify">
           <Accordion defaultExpanded>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <Typography className="uppercase font-bold">Tentang Kami</Typography>
+              <Typography className="font-bold text-blue-1000"><p className='font-bold text-2xl'>Tentang Kami</p></Typography>
             </AccordionSummary>
             <AccordionDetails className='flex flex-col gap-4'>
               <Typography>
@@ -61,7 +62,7 @@ const Home: React.FC = () => {
 
           <Accordion defaultExpanded>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <Typography className="uppercase font-bold">Langkah Penggunaan Website</Typography>
+              <Typography className="font-bold"><p className='font-bold text-2xl text-blue-1000'>Langkah Penggunaan Website</p></Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
@@ -78,7 +79,7 @@ const Home: React.FC = () => {
 
           <Accordion defaultExpanded>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <Typography className="uppercase font-bold">Lokasi Perusahaan</Typography>
+              <Typography className="font-bold"><p className='font-bold text-2xl text-blue-1000'>Lokasi Perusahaan</p></Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
@@ -89,7 +90,7 @@ const Home: React.FC = () => {
 
           <Accordion defaultExpanded>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <Typography className="uppercase font-bold">Benefit Magang</Typography>
+              <Typography className="font-bold"><p className='font-bold text-2xl text-blue-1000'>Benefit Magang</p></Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
@@ -104,26 +105,15 @@ const Home: React.FC = () => {
             </AccordionDetails>
           </Accordion>
 
-          <Accordion>
-            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <Typography className="uppercase font-bold">Kontak Kami</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>
-                <ul className="list-disc list-inside">
-                  <li>Telepon Kantor: (024) 3544606</li>
-                  <li>Kontak: +62 821-4227-9780 (Nova Adrian - Assistant Manajer Humas)</li>
-                </ul>
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
-
         </div>
         </div>
         <div className='flex'>
-          <Footer/>
         </div>
       </section>
+      </div>
+      <div className='w-full z-0'>
+       <Footer />
+      </div>
     </div>
   );
 };
