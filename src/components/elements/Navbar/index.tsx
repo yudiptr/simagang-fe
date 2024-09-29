@@ -50,7 +50,7 @@ export const Navbar: React.FC = () => {
 
     return (
         <>
-           <nav className="md:hidden bg-blue-1000 fixed top-0 left-0 w-full flex justify-between items-center p-4 z-50">
+           <nav className="md:hidden bg-[#2D2A70] fixed top-0 left-0 w-full flex justify-between items-center p-4 z-50">
                 <Image src="/kai3.png" alt="Logo" width={59} height={30} />
                 <button onClick={toggleMenu}>
                     <Image
@@ -117,7 +117,7 @@ export const Navbar: React.FC = () => {
             )}
             
         {/* Desktop navbar */}
-        <nav className={`hidden md:block md:sticky md:top-0 md:bg-white md:h-screen md:overflow-hidden md:transition-width md:duration-500 md:bg-blue-1000 ${sidebarOpen ? 'md:w-60' : 'md:w-24'}`}>
+        <nav className={`hidden md:bg-[#2D2A70] md:block md:sticky md:top-0 md:bg-white md:h-screen md:overflow-hidden md:transition-width md:duration-500 md:bg-blue-1000 ${sidebarOpen ? 'md:w-60' : 'md:w-24'}`}>
             <div className="flex items-center px-4 py-6">
                 <div>
                     <Image 
