@@ -5,11 +5,14 @@ import { MdWorkHistory } from "react-icons/md";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { parseUser } from "@/utils";
+import { MdClose } from "react-icons/md";
 
 export const Navbar: React.FC = () => {
     const router = useRouter();
     const [role, setRole] = useState<string | null>(null);
     const [sidebarOpen, setSidebarOpen] = useState(false);
+
+    const [menuOpen, setMenuOpen] = useState(false);
 
     useEffect(() => {
         const getUserRole = async () => {
@@ -21,6 +24,22 @@ export const Navbar: React.FC = () => {
         getUserRole();
     }, []);
 
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia('(min-width: 767px)'); 
+        const handleMediaChange = () => {
+            setSidebarOpen(mediaQuery.matches);
+        };
+        mediaQuery.addEventListener('change', handleMediaChange);
+        handleMediaChange();
+        return () => {
+            mediaQuery.removeEventListener('change', handleMediaChange);
+        };
+    }, []);
+
     useEffect(() => {
         localStorage.setItem('sidebarOpen', JSON.stringify(sidebarOpen));
       }, [sidebarOpen]);
@@ -30,7 +49,75 @@ export const Navbar: React.FC = () => {
     };
 
     return (
-        <nav className={`sticky top-0 bg-white h-screen overflow-hidden transition-width duration-500 bg-blue-1000 ${sidebarOpen ? 'w-60' : 'w-24'}`}>
+        <>
+           <nav className="md:hidden bg-blue-1000 fixed top-0 left-0 w-full flex justify-between items-center p-4 z-50">
+                <Image src="/kai3.png" alt="Logo" width={59} height={30} />
+                <button onClick={toggleMenu}>
+                    <Image
+                        src={menuOpen ? "/close-bar.png" : "/open-bar.png"}
+                        alt="Menu Toggle"
+                        width={34}
+                        height={34}
+                    />
+                </button>
+            </nav>
+
+            {menuOpen && (
+                <div className="md:hidden fixed top-0 left-0 w-full h-full bg-blue-1000 flex flex-col items-center justify-center z-50">
+                    <button className="absolute top-4 right-4" onClick={toggleMenu}>
+                        <MdClose className="text-white text-4xl" />
+                    </button>
+                    <ul className="space-y-6 text-white text-2xl text-center">
+                        <li>
+                            <Link href="/" onClick={toggleMenu} className="hover:text-orange-1000">Beranda</Link>
+                        </li>
+                        <li>
+                            <Link href="/divisi" onClick={toggleMenu} className="hover:text-orange-1000">Divisi Magang</Link>
+                        </li>
+                        {role === 'Admin' && (
+                            <>
+                                <li>
+                                    <Link href="/intern-registration-list" onClick={toggleMenu} className="hover:text-orange-1000">Status Permohonan</Link>
+                                </li>
+                                <li>
+                                    <Link href="/daftar-laporan" onClick={toggleMenu} className="hover:text-orange-1000">Rekap Peserta Magang</Link>
+                                </li>
+                            </>
+                        )}
+                        {role === 'USER' && (
+                            <>
+                                <li>
+                                    <Link href="/intern-registration" onClick={toggleMenu} className="hover:text-orange-1000">Daftar Magang</Link>
+                                </li>
+                                <li>
+                                    <Link href="/my-registration" onClick={toggleMenu} className="hover:text-orange-1000">Permohonan Saya</Link>
+                                </li>
+                                <li>
+                                    <Link href="/lapor" onClick={toggleMenu} className="hover:text-orange-1000">Lapor Selesai Magang</Link>
+                                </li>
+                            </>
+                        )}
+                        <li>
+                            {role !== 'Admin' && (
+                                <div onClick={() => router.replace('/profile')} className="hover:text-orange-1000">
+                                    Edit Profile
+                                </div>
+                            )}
+                        </li>
+                        <li>
+                            <div onClick={() => {
+                                localStorage.removeItem('at');
+                                router.replace('/login');
+                            }} className="hover:text-orange-1000">
+                                Logout
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            )}
+            
+        {/* Desktop navbar */}
+        <nav className={`hidden md:block md:sticky md:top-0 md:bg-white md:h-screen md:overflow-hidden md:transition-width md:duration-500 md:bg-blue-1000 ${sidebarOpen ? 'md:w-60' : 'md:w-24'}`}>
             <div className="flex items-center px-4 py-6">
                 <div>
                     <Image 
@@ -39,7 +126,7 @@ export const Navbar: React.FC = () => {
                         width={sidebarOpen ? 91 : 59} 
                         height={sidebarOpen ? 46 : 30} 
                         className={`${sidebarOpen ? 'ml-2 mb-2' : 'items-center'} transition-width duration-500`} />
-                    <h2 className={`font-bold text-xl ml-2 text-transparent transition-opacity duration-500 ${sidebarOpen ? "text-white" : "hidden"}`}>Magang KAI DAOP 4</h2>
+                    <h2 className={`md:font-bold text-xl ml-2 text-transparent transition-opacity duration-500 ${sidebarOpen ? "text-white" : "hidden"}`}>Magang KAI DAOP 4</h2>
                 </div>
                 <Image 
                     src="/close-bar.png" 
@@ -68,19 +155,27 @@ export const Navbar: React.FC = () => {
                         </span>
                     </Link>
                 </li>
-                <li>
+                {/* <li>
                     <Link href="/division" className={`flex flex-row gap-2 p-2 text-gray-600 group ${sidebarOpen ? "hover:bg-orange-1000 ml-2" : "justify-center items-center"} hover:rounded-lg`}>
                         <FaPeopleArrows className="text-2xl flex-shrink-0 text-orange-1000 group-hover:text-white hover:text-white hover:bg-orange-1000 hover:rounded-lg hover:p-1 hover:scale-150" />
                         <span>
                             <p className={`relative ${sidebarOpen ? 'relative text-white font-semibold flex' : 'hidden'} transition-opacity duration-500`}>Divisi Magang</p>
                         </span>
                     </Link>
-                </li>
+                </li> */}
+                {/* <li>
+                    <Link href="/division" className={`flex flex-row gap-2 p-2 text-gray-600 group ${sidebarOpen ? "hover:bg-orange-1000 ml-2" : "justify-center items-center"} hover:rounded-lg`}>
+                        <FaPeopleArrows className="text-2xl flex-shrink-0 text-orange-1000 group-hover:text-white hover:text-white hover:bg-orange-1000 hover:rounded-lg hover:p-1 hover:scale-150" />
+                        <span>
+                            <p className={`relative ${sidebarOpen ? 'relative text-white font-semibold flex' : 'hidden'} transition-opacity duration-500`}>Divisi Magang</p>
+                        </span>
+                    </Link>
+                </li> */}
                 <li>
-                    <Link href="/kuota" className={`flex flex-row gap-2 p-2 text-gray-600 group ${sidebarOpen ? "hover:bg-orange-1000 ml-2" : "justify-center items-center"} hover:rounded-lg`}>
+                    <Link href="/divisi" className={`flex flex-row gap-2 p-2 text-gray-600 group ${sidebarOpen ? "hover:bg-orange-1000 ml-2" : "justify-center items-center"} hover:rounded-lg`}>
                         <FaUsers className="text-2xl flex-shrink-0 text-orange-1000 group-hover:text-white hover:text-white hover:bg-orange-1000 hover:rounded-lg hover:p-1 hover:scale-150" />
                         <span>
-                            <p className={`relative ${sidebarOpen ? 'relative text-white font-semibold flex' : 'hidden'} transition-opacity duration-500`}>Kuota Magang</p>
+                            <p className={`relative ${sidebarOpen ? 'relative text-white font-semibold flex' : 'hidden'} transition-opacity duration-500`}>Divisi Magang</p>
                         </span>
                     </Link>
                 </li>
@@ -160,5 +255,6 @@ export const Navbar: React.FC = () => {
                 </li>
             </ul>
         </nav>
+        </>
     );
 };

@@ -78,12 +78,12 @@ const Index: React.FC = () => {
   return (
     <div className="min-h-screen min-w-screen flex">
       <Navbar />
-      <section className="flex-1 p-10">
+      <section className="flex-1 md:p-10 mt-20 md:mt-1">
         <div className="relative mb-10">
           <div className="flex flex-col items-center">
             <h1 className="text-3xl font-bold text-blue-1000">Status Permohonan</h1>
           </div>
-          <main className="flex-1 p-6 flex flex-col items-center">
+          <main className="flex-1 md:p-6 flex flex-col items-center">
             <div className="bg-white p-4 rounded-lg shadow-md w-full max-w-4xl">
               <table className="min-w-full bg-white border border-gray-200 rounded-lg">
                 <thead>

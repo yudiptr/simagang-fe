@@ -145,13 +145,13 @@ const Register: React.FC = () => {
         <div className="relative">
           <div className="flex flex-col items-center">
             <i className="fas fa-user-cog text-3xl text-gray-600"></i>
-            <h1 className="text-3xl font-bold mt-4 text-blue-1000">Daftar Magang</h1>
-            <p className="mt-2">Masukkan data diri Anda!</p>
+            <h1 className="text-3xl font-bold mt-4 text-blue-1000 mt-8 md:mt-1">Daftar Magang</h1>
+            <p className="mt-2 mb-4">Masukkan data diri Anda!</p>
           </div>
         </div>
 
-        <main className="flex p-8 justify-center">
-          <div className="bg-white shadow-lg rounded-lg p-8 w-1/2">
+        <main className="flex md:p-8 justify-center">
+          <div className="bg-white shadow-lg rounded-lg p-8 md:w-1/2">
             {loading ? (
               <div className="flex justify-center items-center">
                 <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">

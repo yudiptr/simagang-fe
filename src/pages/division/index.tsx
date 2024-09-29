@@ -143,16 +143,26 @@ const Index: React.FC = () => {
           {divisionData ? (
             Object.entries(divisionData).map(([division, details]) => (
               <div key={division} className="bg-white p-4 rounded-2xl max-w-[500px] shadow-md flex flex-col gap-4 min-w-[250px]">
-                <div className="flex justify-center items-center">
-                  <h3 className="text-xl flex justify-center font-bold text-center mb-4">{details.division_name}</h3>
+                <div className="justify-center items-center">
+                  <h3 className="text-lg flex justify-center font-bold text-center text-blue-1000 mb-4">{details.division_name}</h3>
+                  <h2 className="text-base flex justify-center font-semibold text-center text-blue-1000">Durasi Magang</h2>
+                  <div className='w-full justify-center items-center text-center flex'>
+                    <p className='justify-center flex bg-blue-1000 text-white text-semibold py-1 px-4 text-center rounded-lg font-semibold mb-2'>100 orang</p>
+                  </div>
+                  <h2 className="text-base flex justify-center font-semibold text-center text-orange-1000">Kuota</h2>
+                  <div className='w-full justify-center items-center text-center flex'>
+                    <p className='justify-center flex bg-orange-1000 text-white text-semibold py-1 px-4 text-center rounded-lg font-semibold'>100 orang</p>
+                  </div>
+                  <div className='w-full justify-center flex mt-8 mb-2'>
                   {role === 'Admin' && (
                     <button 
                       onClick={() => handleDeleteDivision(details.id)} 
-                      className="text-white font-bold bg-red-600 p-2 rounded-xl hover:bg-red-800"
+                      className="text-white font-bold bg-red-600 px-2 py-1 rounded-lg hover:bg-red-800"
                     >
                       Hapus
                     </button>
                   )}
+                  </div>
                 </div>
               </div>
 

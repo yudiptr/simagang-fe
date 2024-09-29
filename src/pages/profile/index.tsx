@@ -78,7 +78,7 @@ const EditProfile: React.FC = () => {
     <div className="min-h-screen flex">
       <Navbar />
 
-      <section className="flex-1 p-10">
+      <section className="flex-1 md:p-10 mt-16 md:mt-1">
         <div className="relative">
           <div className="flex flex-col items-center">
             <h1 className="text-3xl font-bold mt-4 text-blue-1000">Edit Profil</h1>
@@ -86,8 +86,8 @@ const EditProfile: React.FC = () => {
           </div>
         </div>
 
-        <main className="flex p-8 justify-center">
-          <div className="bg-white shadow-lg rounded-lg p-8 w-1/2">
+        <main className="flex md:p-8 py-8 justify-center">
+          <div className="bg-white shadow-lg rounded-lg p-8 md:w-1/2">
             <form onSubmit={handleSubmit(onSubmit)}>
               {/* Full Name */}
               <div className="mb-4">
