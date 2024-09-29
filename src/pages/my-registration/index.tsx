@@ -78,16 +78,16 @@ const Index: React.FC = () => {
   return (
     <div className="min-h-screen min-w-screen flex">
       <Navbar />
-      <section className="flex-1 p-10">
+      <section className="flex-1 md:p-10 mt-20 md:mt-1">
         <div className="relative mb-10">
           <div className="flex flex-col items-center">
-            <h1 className="text-3xl font-bold">Status Permohonan</h1>
+            <h1 className="text-3xl font-bold text-blue-1000">Status Permohonan</h1>
           </div>
-          <main className="flex-1 p-6 flex flex-col items-center">
+          <main className="flex-1 md:p-6 flex flex-col items-center">
             <div className="bg-white p-4 rounded-lg shadow-md w-full max-w-4xl">
               <table className="min-w-full bg-white border border-gray-200 rounded-lg">
                 <thead>
-                  <tr className="bg-green-500 text-white">
+                  <tr className="bg-blue-1000 text-white">
                     <th className="p-4 text-left">Nama Lengkap</th>
                     <th className="p-4 text-left">Divisi</th>
                     <th className="p-4 text-left">Tanggal Daftar</th>
@@ -107,7 +107,7 @@ const Index: React.FC = () => {
                       <td className="p-4 text-center">
                         <button 
                           onClick={() => handleViewClick(entry)}
-                          className="px-4 py-2 border border-green-500 rounded-md hover:bg-green-500 hover:text-white transition-colors"
+                          className="px-4 py-1 bg-orange-60 rounded-md hover:bg-orange-1000 text-white hover:text-white transition-colors"
                         >
                           Lihat
                         </button>

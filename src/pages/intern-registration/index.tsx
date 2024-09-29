@@ -145,13 +145,13 @@ const Register: React.FC = () => {
         <div className="relative">
           <div className="flex flex-col items-center">
             <i className="fas fa-user-cog text-3xl text-gray-600"></i>
-            <h1 className="text-3xl font-bold mt-4">Daftar Magang</h1>
-            <p className="mt-2">Masukkan data diri Anda!</p>
+            <h1 className="text-3xl font-bold mt-4 text-blue-1000 mt-8 md:mt-1">Daftar Magang</h1>
+            <p className="mt-2 mb-4">Masukkan data diri Anda!</p>
           </div>
         </div>
 
-        <main className="flex p-8 justify-center">
-          <div className="bg-white shadow-lg rounded-lg p-8 w-1/2">
+        <main className="flex md:p-8 justify-center">
+          <div className="bg-white shadow-lg rounded-lg p-8 md:w-1/2">
             {loading ? (
               <div className="flex justify-center items-center">
                 <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
@@ -162,11 +162,11 @@ const Register: React.FC = () => {
               <form onSubmit={handleSubmit(onSubmit)}>
                 {/* Division Dropdown */}
                 <div className="mb-4">
-                  <label htmlFor="division_id" className="block text-sm font-medium text-gray-700">Divisi</label>
+                  <label htmlFor="division_id" className="block text-sm font-semibold text-blue-1000">Divisi</label>
                   <select
                     id="division_id"
                     {...register('division_id')}
-                    className="w-full p-2 mt-1 border border-gray-300 rounded-md"
+                    className="w-full p-2 mt-1 border border-orange-1000 rounded-md"
                     required
                   >
                     <option value="">Pilih...</option>
@@ -180,11 +180,11 @@ const Register: React.FC = () => {
 
                 {/* Duration Dropdown */}
                 <div className="mb-4">
-                  <label htmlFor="intern_duration" className="block text-sm font-medium text-gray-700">Durasi</label>
+                  <label htmlFor="intern_duration" className="block text-sm font-semibold text-blue-1000">Durasi</label>
                   <select
                     id="intern_duration"
                     {...register('intern_duration')}
-                    className="w-full p-2 mt-1 border border-gray-300 rounded-md"
+                    className="w-full p-2 mt-1 border border-orange-1000 rounded-md"
                     required
                     value={watch('intern_duration')} // Control selected value
                   >
@@ -206,7 +206,7 @@ const Register: React.FC = () => {
                   { id: 'proposal', label: 'Proposal Magang', type: 'file', accept: '.pdf', placeholder: 'Upload PDF file, max 3MB' },
                 ].map(({ id, label, type, accept, placeholder }) => (
                   <div key={id} className="mb-4">
-                    <label htmlFor={id} className="block text-sm font-medium text-gray-700">
+                    <label htmlFor={id} className="block text-sm font-semibold text-blue-1000">
                       {label}
                     </label>
                     <input
@@ -217,7 +217,7 @@ const Register: React.FC = () => {
                       {...register(id, {
                         required: true,
                       })}
-                      className="w-full p-2 mt-1 border border-gray-300 rounded-md"
+                      className="w-full p-2 mt-1 border border-orange-1000 rounded-md"
                       onChange={(e) => {
                         const file = e.target.files?.[0];
                         if (file && !validateFile(file, accept.slice(1))) {
@@ -225,7 +225,7 @@ const Register: React.FC = () => {
                         }
                       }}
                     />
-                    <p className="text-sm text-gray-500">{placeholder}</p>
+                    <p className="text-sm text-orange-80">{placeholder}</p>
                   </div>
                 ))}
 

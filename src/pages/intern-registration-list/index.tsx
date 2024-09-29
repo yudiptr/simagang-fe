@@ -104,40 +104,15 @@ const Index: React.FC = () => {
       <section className="flex-1 p-10">
         <div className="relative mb-10">
           <div className="flex flex-col items-center">
-            <h1 className="text-3xl font-bold">Status Permohonan</h1>
+            <h1 className="text-3xl font-bold text-blue-1000">Status Permohonan</h1>
           </div>
           <main className="flex-1 p-6 flex flex-col items-center">
             <div className="bg-white p-4 rounded-lg shadow-md w-full max-w-4xl">
               <div className="flex justify-between mb-4">
-                <div>
-                  <button 
-                    onClick={handleBulkAccept} 
-                    className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 mr-2"
-                    disabled={selectedRegistrations.length === 0}
-                  >
-                    Terima
-                  </button>
-                  <button 
-                    onClick={handleBulkReject} 
-                    className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
-                    disabled={selectedRegistrations.length === 0}
-                  >
-                    Tolak
-                  </button>
-                </div>
-                <div className="flex items-center">
-                  <input
-                    type="checkbox"
-                    checked={isAllSelected}
-                    onChange={handleSelectAllChange}
-                    className="mr-2"
-                  />
-                  <span>Pilih Semua</span>
-                </div>
               </div>
               <table className="min-w-full bg-white border border-gray-200 rounded-lg">
-                <thead>
-                  <tr className="bg-green-500 text-white">
+                <thead className='rounded-lg'>
+                  <tr className="bg-blue-1000 text-white">
                     <th className="p-4 text-left">
                       <input
                         type="checkbox"
@@ -171,7 +146,7 @@ const Index: React.FC = () => {
                       <td className="p-4 text-center">
                         <button 
                           onClick={() => handleViewClick(entry)}
-                          className="px-4 py-2 border border-green-500 rounded-md hover:bg-green-500 hover:text-white transition-colors"
+                          className="px-4 py-1 text-sm text-white rounded-md bg-orange-60 hover:bg-orange-1000 hover:text-white transition-colors"
                         >
                           Lihat
                         </button>
@@ -180,6 +155,22 @@ const Index: React.FC = () => {
                   ))}
                 </tbody>
               </table>
+              <div className='text-center justify-center items-center flex w-full mt-4'>
+                  <button 
+                    onClick={handleBulkAccept} 
+                    className="px-6 py-1 bg-blue-60 text-white text-sm rounded-md hover:bg-blue-1000 mr-2"
+                    disabled={selectedRegistrations.length === 0}
+                  >
+                    Terima
+                  </button>
+                  <button 
+                    onClick={handleBulkReject} 
+                    className="px-6 py-1 bg-orange-60 text-white text-sm rounded-md hover:bg-orange-1000"
+                    disabled={selectedRegistrations.length === 0}
+                  >
+                    Tolak
+                  </button>
+                </div>
             </div>
           </main>
         </div>

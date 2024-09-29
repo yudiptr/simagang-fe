@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '@/components/elements/Footer';
 import { Navbar } from '@/components';
 import AuthHoc from "@/components/hoc/authHoc";
 import { Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/material';
@@ -8,10 +9,11 @@ const Home: React.FC = () => {
   return (
     <div className="min-h-screen min-w-screen flex">
       <Navbar />
-      <section className="flex-1 p-10">
+      <section className="flex-1 overflow-y-auto mt-16 md:mt-1">
+        <div className='md:p-10 p-4'>
         <div className="relative mb-10">
           <div className="flex flex-col items-center">
-            <h1 className="text-3xl font-bold">Selamat Datang!</h1>
+            <h1 className="text-3xl font-bold text-blue-1000">Selamat Datang!</h1>
             <p>Daftar Magang PT. Kereta Api Indonesia Daerah Operasi 4 Semarang</p>
           </div>
         </div>
@@ -109,13 +111,17 @@ const Home: React.FC = () => {
             <AccordionDetails>
               <Typography>
                 <ul className="list-disc list-inside">
-                  <li>Telepon Kantorr: (024) 3544606</li>
+                  <li>Telepon Kantor: (024) 3544606</li>
                   <li>Kontak: +62 821-4227-9780 (Nova Adrian - Assistant Manajer Humas)</li>
                 </ul>
               </Typography>
             </AccordionDetails>
           </Accordion>
 
+        </div>
+        </div>
+        <div className='flex'>
+          <Footer/>
         </div>
       </section>
     </div>

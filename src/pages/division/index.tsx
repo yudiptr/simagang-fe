@@ -5,6 +5,7 @@ import AuthHoc from '@/components/hoc/authHoc';
 import { Navbar } from '@/components/';
 import { useSnackbar } from 'notistack';
 import { parseUser } from '@/utils';
+import Footer from '@/components/elements/Footer';
 
 interface DivisionData {
   [key: string]: any;
@@ -113,12 +114,16 @@ const Index: React.FC = () => {
   return (
     <div className="min-h-screen flex">
       <Navbar />
-      <section className="flex-1 p-10">
+      <section className="flex-1">
+        <div className='p-10 min-h-screen'>
         <div className="relative mb-10">
           {role === 'Admin' && (
             <div className="absolute top-0 right-0 mt-4 mr-4 flex gap-4">
               <div className="relative">
-                <FaEdit className="text-2xl text-gray-600 cursor-pointer" onClick={handleEditClick} />
+                <button className={`flex`} onClick={handleEditClick}>
+                  <FaEdit className="text-2xl text-orange-1000 cursor-pointer mr-1"/>
+                  <p className='text-blue-1000 font-semibold'>Edit</p>
+                </button>
                 {showMenu && (
                   <div className="absolute top-full right-0 mt-2 w-40 bg-white border border-gray-200 shadow-lg rounded-md">
                     <ul>
@@ -130,7 +135,7 @@ const Index: React.FC = () => {
             </div>
           )}
           <div className="flex flex-col items-center">
-            <h1 className="text-3xl font-bold">Divisi Magang</h1>
+            <h1 className="text-3xl font-bold text-blue-1000">Divisi Magang</h1>
           </div>
         </div>
 
@@ -138,16 +143,26 @@ const Index: React.FC = () => {
           {divisionData ? (
             Object.entries(divisionData).map(([division, details]) => (
               <div key={division} className="bg-white p-4 rounded-2xl max-w-[500px] shadow-md flex flex-col gap-4 min-w-[250px]">
-                <div className="flex justify-center items-center">
-                  <h3 className="text-xl flex justify-center font-bold text-center mb-4">{details.division_name}</h3>
+                <div className="justify-center items-center">
+                  <h3 className="text-lg flex justify-center font-bold text-center text-blue-1000 mb-4">{details.division_name}</h3>
+                  <h2 className="text-base flex justify-center font-semibold text-center text-blue-1000">Durasi Magang</h2>
+                  <div className='w-full justify-center items-center text-center flex'>
+                    <p className='justify-center flex bg-blue-1000 text-white text-semibold py-1 px-4 text-center rounded-lg font-semibold mb-2'>100 orang</p>
+                  </div>
+                  <h2 className="text-base flex justify-center font-semibold text-center text-orange-1000">Kuota</h2>
+                  <div className='w-full justify-center items-center text-center flex'>
+                    <p className='justify-center flex bg-orange-1000 text-white text-semibold py-1 px-4 text-center rounded-lg font-semibold'>100 orang</p>
+                  </div>
+                  <div className='w-full justify-center flex mt-8 mb-2'>
                   {role === 'Admin' && (
                     <button 
                       onClick={() => handleDeleteDivision(details.id)} 
-                      className="text-white font-bold bg-red-600 p-2 rounded-xl hover:bg-red-800"
+                      className="text-white font-bold bg-red-600 px-2 py-1 rounded-lg hover:bg-red-800"
                     >
                       Hapus
                     </button>
                   )}
+                  </div>
                 </div>
               </div>
 
@@ -156,8 +171,12 @@ const Index: React.FC = () => {
             <div>Loading...</div>
           )}
         </div>
+        </div>
+        <div>
+          <Footer />
+        </div>
       </section>
-
+  
       {(showModal || modalAnimation === 'leave') && (
         <div
           className={`fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 transition-opacity duration-300 ease-in-out ${modalAnimation === 'enter' ? 'opacity-100' : 'opacity-0'} ${!showModal ? 'pointer-events-none' : ''}`}
