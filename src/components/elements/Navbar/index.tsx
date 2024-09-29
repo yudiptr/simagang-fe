@@ -117,7 +117,7 @@ export const Navbar: React.FC = () => {
             )}
             
         {/* Desktop navbar */}
-        <nav className={`hidden md:bg-[#2D2A70] md:block md:sticky md:top-0 md:bg-white md:h-screen md:overflow-hidden md:transition-width md:duration-500 md:bg-blue-1000 ${sidebarOpen ? 'md:w-60' : 'md:w-24'}`}>
+        <nav className={`hidden md:bg-[#2D2A70] md:block md:sticky md:top-0 md:h-screen md:overflow-hidden md:transition-width md:duration-500 md:bg-blue-1000 ${sidebarOpen ? 'md:w-60' : 'md:w-24'}`}>
             <div className="flex items-center px-4 py-6">
                 <div>
                     <Image 
