@@ -26,7 +26,7 @@ const Home: React.FC = () => {
             </AccordionSummary>
             <AccordionDetails className='flex flex-col gap-4'>
               <Typography>
-                Daerah Operasi IV Semarang atau disingkat dengan Daop 4 Semarang adalah salah satu daerah operasi 
+                Daerah Operasi 4 Semarang atau disingkat dengan Daop 4 Semarang adalah salah satu daerah operasi 
                 perkeretaapian Indonesia yang dipimpin oleh seorang Executive Vice President (EVP) yang berada di 
                 bawah dan bertanggung jawab kepada Direksi PT Kereta Api Indonesia. Daerah Operasi IV Semarang 
                 memiliki enam stasiun besar, di antaranya adalah stasiun Semarang Tawang, Stasiun Semarang Poncol, 
