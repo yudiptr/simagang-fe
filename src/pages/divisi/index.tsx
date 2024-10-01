@@ -214,37 +214,37 @@ const Index: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-2">
-        {divisionData && Object.entries(divisionData).map(([divisionName, divisionInfo]) => (
-            <div key={divisionInfo.id} className="bg-white p-4 rounded-2xl shadow-md flex flex-col gap-4 min-w-[350px]">
-              <h3 className="text-lg flex justify-center font-bold text-center text-blue-1000">{divisionName}</h3>
-              {quotaData && quotaData[divisionName] ? (
-                Object.entries(quotaData[divisionName]).map(([duration, count], index) => (
-                  <div key={index}>
-                    <h2 className="text-base flex justify-center font-semibold text-center text-blue-1000">Durasi Magang</h2>
-                    <div className='w-full justify-center items-center text-center flex'>
-                      <p className='justify-center flex bg-blue-1000 text-white text-semibold py-1 px-4 text-center rounded-lg font-semibold mb-1'>{duration}</p>
-                    </div>
-                    <h2 className="text-base flex justify-center font-semibold text-center text-orange-1000">Kuota</h2>
-                    <div className='w-full justify-center items-center text-center flex'>
-                      <p className='justify-center flex bg-orange-1000 text-white text-semibold py-1 px-4 text-center rounded-lg font-semibold'>{count} orang</p>
-                    </div>
-                    {role === "Admin" && (
-                      <div className='flex w-full justify-center mt-4'>
-                        <button
-                          className="px-3 py-1 bg-red-500 text-white rounded-md"
-                          onClick={() => handleDeleteQuota(divisionName, duration)}
-                        >
-                          Hapus
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                ))
-              ) : (
-                <div className="text-center text-gray-500">Belum terdapat kuota magang.</div>
-              )}
+        {quotaData ? (
+  Object.entries(quotaData).map(([department, quotas]) => (
+    <div key={department} className="bg-white p-4 rounded-2xl shadow-md flex flex-col gap-4 min-w-[350px]">
+      <h3 className="text-xl font-bold text-center mb-4">{department}</h3>
+      {Object.entries(quotas).map(([duration, count], index) => (
+        <div key={index}>
+          <h2 className="text-base flex justify-center font-semibold text-center text-blue-1000">Durasi Magang</h2>
+          <div className='w-full justify-center items-center text-center flex'>
+            <p className='justify-center flex bg-blue-1000 text-white text-semibold py-1 px-4 text-center rounded-lg font-semibold mb-1'>{duration}</p>
+          </div>
+          <h2 className="text-base flex justify-center font-semibold text-center text-orange-1000">Kuota</h2>
+          <div className='w-full justify-center items-center text-center flex'>
+            <p className='justify-center flex bg-orange-1000 text-white text-semibold py-1 px-4 text-center rounded-lg font-semibold'>{count} orang</p>
+          </div>
+          {role === "Admin" && (
+            <div className='flex w-full justify-center mt-4'>
+              <button
+                className="px-3 py-1 bg-red-500 text-white rounded-md"
+                onClick={() => handleDeleteQuota(department, duration)}
+              >
+                Hapus
+              </button>
             </div>
-          ))}
+          )}
+        </div>
+      ))}
+    </div>
+  ))
+) : (
+  <div>Loading...</div>
+)}
           {(showModal || modalAnimation === 'leave') && (
         <div
           className={`fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 transition-opacity duration-300 ease-in-out ${modalAnimation === 'enter' ? 'opacity-100' : 'opacity-0'} ${!showModal ? 'pointer-events-none' : ''}`}

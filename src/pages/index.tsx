@@ -26,22 +26,23 @@ const Home: React.FC = () => {
             </AccordionSummary>
             <AccordionDetails className='flex flex-col gap-4'>
               <Typography>
-                Daerah Operasi IV Semarang atau disingkat dengan Daop 4 Semarang adalah salah satu daerah operasi 
-                perkeretaapian Indonesia yang dipimpin oleh seorang Executive Vice President (EVP) yang berada di 
-                bawah dan bertanggung jawab kepada Direksi PT Kereta Api Indonesia. Daerah Operasi IV Semarang 
-                memiliki enam stasiun besar, di antaranya adalah stasiun Semarang Tawang, Stasiun Semarang Poncol, 
-                Stasiun Pekalongan, Stasiun Tegal, Stasiun Bojonegoro, dan Stasiun Cepu, sedangkan stasiun kereta api 
-                kelas menengah di antaranya adalah Stasiun Kedungjati, Stasiun Gambringan, Stasiun Weleri, Stasiun Comal, 
-                dan Stasiun Pemalang. Gudang kereta api berada di kompleks Stasiun Semarang Poncol, sedangkan dipo 
-                lokomotif berada tak jauh dari Stasiun Semarang Poncol.
+              Daerah Operasi 4 Semarang atau disingkat dengan Daop 4 Semarang adalah salah satu 
+              daerah operasi perkeretaapian Indonesia yang dipimpin oleh seorang Executive Vice 
+              President (EVP) yang berada di bawah dan bertanggung jawab kepada Direksi PT Kereta 
+              Api Indonesia. Daerah Operasi 4 Semarang memiliki lima stasiun besar, di antaranya 
+              adalah stasiun Semarang Tawang Bank Jateng, Stasiun Semarang Poncol, Stasiun 
+              Pekalongan, Stasiun Tegal, dan Stasiun Cepu. Gudang kereta api berada di kompleks 
+              Stasiun Semarang Poncol, sedangkan dipo lokomotif berada tak jauh dari Stasiun 
+              Semarang Poncol.
               </Typography>
 
               <Typography>
-                Daerah operasi Semarang juga mempunyai wilayah kerja yang meliputi tiga kota dan tujuh 
-                Kabupaten di Jawa Tengah dan dua Kabupaten di Jawa Timur. Tiga kota yang berada di wilayah 
-                Jawa Tengah adalah Kota Tegal, Kota Pekalongan, dan Kota Semarang. Sedangkan tujuh Kabupaten 
-                di Jawa Tengah adalah:
+              Daerah operasi Semarang juga mempunyai wilayah kerja yang meliputi tiga kota dan 
+              tujuh Kabupaten yang berada di Jawa Tengah antara lain yaitu:
                 <ul className="list-disc list-inside">
+                  <li>Kota Semarang</li>
+                  <li>Kota Tegal</li>
+                  <li>Kota Pekalongan</li>
                   <li>Kabupaten Tegal</li>
                   <li>Kabupaten Pemalang</li>
                   <li>Kabupaten Pekalongan</li>
@@ -50,12 +51,6 @@ const Home: React.FC = () => {
                   <li>Kabupaten Grobogan</li>
                   <li>Kabupaten Blora</li>
                 </ul>
-              </Typography>
-
-              <Typography>
-                Wilayah kerja PT. Kereta Api Indonesia (Persero) DAOP IV Semarang tidak hanya pada wilayah 
-                Jawa Tengah saja tetapi juga meliputi Jawa Timur yang terdiri dari dua Kabupaten yaitu Kabupaten 
-                Bojonegoro dan Kabupaten Tuban.
               </Typography>
             </AccordionDetails>
           </Accordion>
