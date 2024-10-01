@@ -140,6 +140,26 @@ const Index: React.FC = () => {
     setQuota('');
   };
 
+  const handleDeleteDivision = async (divisionId: string) => {
+    try {
+      const token = localStorage.getItem('at');
+      const header = token ? { Authorization: `Bearer ${token}` } : {};
+      await axios.patch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/intern/division/delete`, {
+        division_id : divisionId
+      }, {
+        headers: {
+          ...header
+        }
+      });
+      fetchDivisionData();
+      fetchQuotaData();
+      enqueueSnackbar('Division deleted successfully!', { variant: 'success' });
+    } catch (error) {
+      enqueueSnackbar('Error deleting division: ' + (error as Error).message, { variant: 'error' });
+      console.error('Error deleting division:', error);
+    }
+  };
+
   const handleSetQuotaSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -218,6 +238,14 @@ const Index: React.FC = () => {
   Object.entries(quotaData).map(([department, quotas]) => (
     <div key={department} className="bg-white p-4 rounded-2xl shadow-md flex flex-col gap-4 min-w-[350px]">
       <h3 className="text-xl font-bold text-center mb-4">{department}</h3>
+      {role === 'Admin' && divisionData?.[department] && (
+        <button 
+          onClick={() => handleDeleteDivision(String(divisionData[department]?.id))} 
+          className="text-white font-bold bg-red-600 p-2 rounded-xl hover:bg-red-800"
+        >
+          Hapus Divisi
+        </button>
+      )}
       {Object.entries(quotas).map(([duration, count], index) => (
         <div key={index}>
           <h2 className="text-base flex justify-center font-semibold text-center text-blue-1000">Durasi Magang</h2>
