@@ -109,7 +109,7 @@ export const Navbar: React.FC = () => {
                                 localStorage.removeItem('at');
                                 router.replace('/login');
                             }} className="hover:text-orange-1000">
-                                Logout
+                                Keluar
                             </div>
                         </li>
                     </ul>
@@ -126,7 +126,7 @@ export const Navbar: React.FC = () => {
                         width={sidebarOpen ? 91 : 59} 
                         height={sidebarOpen ? 46 : 30} 
                         className={`${sidebarOpen ? 'ml-2 mb-2' : 'items-center'} transition-width duration-500`} />
-                    <h2 className={`md:font-bold text-xl ml-2 text-transparent transition-opacity duration-500 ${sidebarOpen ? "text-white" : "hidden"}`}>Magang KAI DAOP 4</h2>
+                    <h2 className={`md:font-bold text-xl ml-2 text-transparent transition-opacity duration-500 ${sidebarOpen ? "text-white" : "hidden"}`}>Magang KAI DAOP 4 Semarang</h2>
                 </div>
                 <Image 
                     src="/close-bar.png" 
@@ -237,7 +237,7 @@ export const Navbar: React.FC = () => {
                         } className={`flex flex-row gap-2 p-2 text-gray-600 group hover:cursor-pointer ${sidebarOpen ? "hover:bg-orange-1000 ml-2" : "justify-center items-center"} hover:rounded-lg`}>
                         <FaUserEdit  className="text-2xl flex-shrink-0 text-orange-1000 group-hover:text-white hover:text-white hover:bg-orange-1000 hover:rounded-lg hover:p-1 hover:scale-150" />
                         <span>
-                            <p className={`relative ${sidebarOpen ? 'relative text-white font-semibold flex' : 'hidden'} transition-opacity duration-500`}>Edit Profile</p>
+                            <p className={`relative ${sidebarOpen ? 'relative text-white font-semibold flex' : 'hidden'} transition-opacity duration-500`}>Ubah Profil</p>
                         </span>
                         </div>
                 )}
@@ -249,7 +249,7 @@ export const Navbar: React.FC = () => {
                     } className={`flex flex-row gap-2 p-2 text-gray-600 group hover:cursor-pointer ${sidebarOpen ? "hover:bg-orange-1000 ml-2" : "justify-center items-center"} hover:rounded-lg`}>
                         <FaSignOutAlt  className="text-2xl flex-shrink-0 text-orange-1000 group-hover:text-white hover:text-white hover:bg-orange-1000 hover:rounded-lg hover:p-1 hover:scale-150" />
                         <span>
-                            <p className={`relative ${sidebarOpen ? 'relative text-white font-semibold flex' : 'hidden'} transition-opacity duration-500`}>Logout</p>
+                            <p className={`relative ${sidebarOpen ? 'relative text-white font-semibold flex' : 'hidden'} transition-opacity duration-500`}>Keluar</p>
                         </span>
                     </div>
                 </li>

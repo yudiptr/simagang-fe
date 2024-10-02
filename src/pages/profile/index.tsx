@@ -81,7 +81,7 @@ const EditProfile: React.FC = () => {
       <section className="flex-1 md:p-10 mt-16 md:mt-1">
         <div className="relative">
           <div className="flex flex-col items-center">
-            <h1 className="text-3xl font-bold mt-4 text-blue-1000">Edit Profil</h1>
+            <h1 className="text-3xl font-bold mt-4 text-blue-1000">Ubah Profil</h1>
             <span>Masukkan data lengkap Anda di sini</span>
           </div>
         </div>

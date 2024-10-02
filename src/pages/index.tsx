@@ -15,7 +15,7 @@ const Home: React.FC = () => {
         <div className="relative mb-10">
           <div className="flex flex-col items-center">
             <h1 className="text-3xl font-bold text-blue-1000">Selamat Datang!</h1>
-            <p>Daftar Magang PT. Kereta Api Indonesia Daerah Operasi 4 Semarang</p>
+            <p>Daftar Magang PT. Kereta Api Indonesia (Persero) Daerah Operasi 4 Semarang</p>
           </div>
         </div>
 
@@ -71,18 +71,6 @@ const Home: React.FC = () => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-
-          <Accordion defaultExpanded>
-            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <Typography className="font-bold"><p className='font-bold text-2xl text-blue-1000'>Lokasi Perusahaan</p></Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>
-              Jl. MH Thamrin No.3, Miroto, Kec. Semarang Tengah, Kota Semarang, Jawa Tengah 50133.
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
-
           <Accordion defaultExpanded>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
               <Typography className="font-bold"><p className='font-bold text-2xl text-blue-1000'>Benefit Magang</p></Typography>

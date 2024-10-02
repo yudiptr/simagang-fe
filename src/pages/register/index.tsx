@@ -37,11 +37,11 @@ const Register: React.FC = () => {
         username,
         password,
       });
-      enqueueSnackbar('Registration successful! Please log in.', { variant: 'success' });
+      enqueueSnackbar('Berhasil registrasi, silakan masuk', { variant: 'success' });
       router.push('/login');
     } catch (error) {
       if (axios.isAxiosError(error) && error.response?.status === 400) {
-        setError('Username has been used.');
+        setError('Pengguna sudah digunakan');
       } else {
         setError('An unexpected error occurred. Please try again.');
       }
@@ -55,14 +55,14 @@ const Register: React.FC = () => {
     >
       <div className="w-full max-w-md px-4 md:w-4/12 md:max-w-none md:mr-8 lg:mr-36">
         <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8">
-          <h1 className="text-orange-1000 text-xl md:text-2xl mb-2 md:mb-4 font-semibold">Welcome to</h1>
+          <h1 className="text-orange-1000 text-xl md:text-2xl mb-2 md:mb-4 font-semibold">Selamat datang di</h1>
           <h3 className="mb-4 md:mb-6 text-blue-1000 text-xl md:text-2xl font-semibold">
-            Sistem Penerimaan Magang KAI DAOP 4 Semarang
+            Sistem Penerimaan Magang PT. Kereta Api Indonesia (Persero) Daerah Operasi 4 Semarang
           </h3>
           <form>
             <div className="mb-4">
               <label htmlFor="username" className="block text-left mb-2 font-bold text-black">
-                Username
+                Pengguna
               </label>
               <input
                 type="text"
@@ -75,7 +75,7 @@ const Register: React.FC = () => {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="password" className="block text-left font-semibold mb-2">Password:</label>
+              <label htmlFor="password" className="block text-left font-semibold mb-2">Kata Sandi</label>
               <input
                 type="password"
                 id="password"
@@ -92,7 +92,7 @@ const Register: React.FC = () => {
                 className="w-full bg-orange-60 text-white p-3 rounded-lg hover:bg-orange-1000"
                 onClick={solve}
               >
-                Register
+                Daftar
               </button>
             </div>
             {validationError && <div className="text-orange-500 mt-4 font-semibold text-sm md:text-base">{validationError}</div>}

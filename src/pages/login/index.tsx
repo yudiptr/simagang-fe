@@ -39,7 +39,7 @@ const Login: React.FC = () => {
         password,
       });
       localStorage.setItem('at', response.data.data.access_token);
-      enqueueSnackbar('Login success!', { variant: 'success' });
+      enqueueSnackbar('Berhasil Masuk!', { variant: 'success' });
       router.push('/');
     } catch (error) {
       if (axios.isAxiosError(error) && error.response?.status === 400) {
@@ -55,16 +55,16 @@ const Login: React.FC = () => {
       className="min-h-screen flex items-center bg-cover bg-center justify-center md:justify-end"
       style={{ backgroundImage: "url('/bg-login.png')" }}
     >
-      <div className="w-full max-w-md px-4 md:w-9/12 md:pr-12 md:mr-24">
+      <div className="w-full max-w-[600px] px-4 md:w-9/12 md:pr-12 md:mr-24">
         <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8">
-          <h1 className="text-orange-1000 text-xl md:text-2xl mb-2 md:mb-4 font-semibold">Welcome to</h1>
+          <h1 className="text-orange-1000 text-xl md:text-2xl mb-2 md:mb-4 font-semibold">Selamat datang di</h1>
           <h3 className="mb-4 md:mb-6 text-blue-1000 text-xl md:text-2xl font-semibold">
-            Sistem Penerimaan Magang KAI DAOP 4 Semarang
+            Sistem Penerimaan Magang PT. Kereta Api Indonesia (Persero) Daerah Operasi 4 Semarang
           </h3>
           
           <form>
             <label htmlFor="first" className="block text-left mb-2 font-bold text-black">
-              Username
+              Pengguna
             </label>
             <input
               type="text"
@@ -77,7 +77,7 @@ const Login: React.FC = () => {
             />
 
             <label htmlFor="password" className="block text-left mb-2 font-bold text-black">
-              Password
+              Kata sandi
             </label>
             <input
               type="password"
@@ -95,7 +95,7 @@ const Login: React.FC = () => {
                 onClick={solve}
                 className="w-full bg-orange-60 text-white p-3 rounded-lg hover:bg-orange-1000"
               >
-                Login
+                Masuk
               </button>
             </div>
             {validationError && (
