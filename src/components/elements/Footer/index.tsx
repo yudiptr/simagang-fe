@@ -15,12 +15,6 @@ const Footer: React.FC = () => {
                 <BsSuitcaseLg className="text-orange-1000 font-bold mr-2" width={20} height={20} />
                 <p className="text-white font-medium">(024) 3544606</p>
             </div>
-            <div className="flex flex-col md:flex-row md:justify-start md:items-start text-sm md:text-base text-white mt-1">
-                <FiPhone className="text-orange-1000 font-bold mr-2 mb-1 md:mb-0 md:mt-1" width={20} height={20} />
-                <span>
-                    <p className="text-white font-medium md:text-left md:pr-1">+62 821-4227-9780 (Nova Adrian - Assistant Manajer Internal dan External)</p>
-                </span>
-            </div>
         </div>
         <div className="md:text-left mt-4 md:mt-16">
             <p className="font-semibold text-lg text-white">Lokasi</p>

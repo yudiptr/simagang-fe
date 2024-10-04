@@ -39,18 +39,19 @@ const Home: React.FC = () => {
               <Typography>
               Daerah operasi Semarang juga mempunyai wilayah kerja yang meliputi tiga kota dan 
               tujuh Kabupaten yang berada di Jawa Tengah antara lain yaitu:
-                <ul className="list-git disc list-inside">
-                  <li>Kota Semarang</li>
-                  <li>Kota Tegal</li>
-                  <li>Kota Pekalongan</li>
-                  <li>Kabupaten Tegal</li>
-                  <li>Kabupaten Pemalang</li>
-                  <li>Kabupaten Pekalongan</li>
-                  <li>Kabupaten Batang</li>
-                  <li>Kabupaten Kendal</li>
-                  <li>Kabupaten Grobogan</li>
-                  <li>Kabupaten Blora</li>
-                </ul>
+              <ul className="list-disc list-inside">
+                <li>Kota Semarang</li>
+                <li>Kota Tegal</li>
+                <li>Kota Pekalongan</li>
+                <li>Kabupaten Tegal</li>
+                <li>Kabupaten Pemalang</li>
+                <li>Kabupaten Pekalongan</li>
+                <li>Kabupaten Batang</li>
+                <li>Kabupaten Kendal</li>
+                <li>Kabupaten Grobogan</li>
+                <li>Kabupaten Blora</li>
+              </ul>
+
               </Typography>
             </AccordionDetails>
           </Accordion>
