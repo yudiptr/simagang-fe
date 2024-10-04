@@ -61,7 +61,6 @@ const EditProfile: React.FC = () => {
         enqueueSnackbar('Profil berhasil diperbarui!', { variant: 'success' });
         
         if (response.data.data.access_token){
-          console.log(response.data.data)
           localStorage.setItem('at', response.data.data.access_token)
         }
       } else {

@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import axios from 'axios';
 
 interface Registration {
+    id: number;
     created_at: string;
     updated_at: string;
     status: string;
@@ -19,9 +20,10 @@ interface Registration {
 interface ModalProps {
     registration: Registration | null;
     onClose: () => void;
+    fetchRegistrationList: () => void;
 }
 
-const Modal: React.FC<ModalProps> = ({ registration, onClose }) => {
+const Modal: React.FC<ModalProps> = ({ registration, onClose, fetchRegistrationList }) => {
     const modalRef = useRef<HTMLDivElement>(null);
 
     if (!registration) return null;
@@ -49,6 +51,30 @@ const Modal: React.FC<ModalProps> = ({ registration, onClose }) => {
             document.body.removeChild(link);
         } catch (error) {
             console.error('Error downloading file:', error);
+        }
+    };
+
+    const handleDeleteApplication = async () => {
+        try {
+            const token = localStorage.getItem('at');
+            const headers = token ? { Authorization: `Bearer ${token}` } : {};
+            const res = await axios.post(
+                `${process.env.NEXT_PUBLIC_BACKEND_URL}/intern/delete-registration`,
+                {
+                    registration_id: registration.id
+                }
+                ,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        ...headers
+                    }
+                }
+            );
+            fetchRegistrationList();
+            onClose(); // Close modal after deleting
+        } catch (error) {
+            console.error('Error deleting application:', error);
         }
     };
 
@@ -114,6 +140,19 @@ const Modal: React.FC<ModalProps> = ({ registration, onClose }) => {
                         </button>
                         <span>Proposal Magang</span>
                     </div>
+
+                    {/* Conditionally render the delete button if status is "Ditolak" */}
+                    {registration.status === 'Ditolak' && (
+                        <div className="flex items-center justify-center mt-4">
+                            <button
+                                onClick={handleDeleteApplication}
+                                className="text-white bg-red-600 hover:bg-red-800 px-4 py-1 rounded-lg"
+                            >
+                                Hapus Lamaran
+                            </button>
+                        </div>
+                    )}
+
                     <div className='w-full flex justify-center'>
                         <button
                             onClick={onClose}

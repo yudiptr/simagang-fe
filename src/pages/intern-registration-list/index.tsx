@@ -181,6 +181,7 @@ const Index: React.FC = () => {
         <Modal 
           registration={selectedRegistration}
           onClose={handleCloseModal}
+          fetchRegistrationList={fetchRegistrationList}
         />
       )}
     </div>
