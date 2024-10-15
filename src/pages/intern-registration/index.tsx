@@ -16,6 +16,7 @@ const Register: React.FC = () => {
   const [durations, setDurations] = useState<string[]>([]);
   const [quotas, setQuotas] = useState<Record<string, Record<string, number>>>({});
   const [loading, setLoading] = useState(false); // Loading state
+  const [modalOpen, setModalOpen] = useState(false); // State for modal visibility
 
   const watchedDivisionName = watch('division_id');
 
@@ -110,7 +111,7 @@ const Register: React.FC = () => {
 
       if (response.data.code === 200) {
         reset();
-        enqueueSnackbar('Pendaftaran Berhasil.', { variant: 'success' });
+        setModalOpen(true); // Open the modal on success
       } else {
         // Handle error response
         enqueueSnackbar('Registration failed. Please try again.', { variant: 'error' });
@@ -136,6 +137,10 @@ const Register: React.FC = () => {
       return false;
     }
     return true;
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
   };
 
   return (
@@ -205,37 +210,50 @@ const Register: React.FC = () => {
                   { id: 'photo', label: 'Pas Foto', type: 'file', accept: '.png', placeholder: 'Upload PNG file, max 3MB' },
                   { id: 'proposal', label: 'Proposal Magang', type: 'file', accept: '.pdf', placeholder: 'Upload PDF file, max 3MB' },
                 ].map(({ id, label, type, accept, placeholder }) => (
-                  <div key={id} className="mb-4">
-                    <label htmlFor={id} className="block text-sm font-semibold text-blue-1000">
-                      {label}
-                    </label>
+                  <div className="mb-4" key={id}>
+                    <label htmlFor={id} className="block text-sm font-semibold text-blue-1000">{label}</label>
                     <input
                       type={type}
                       id={id}
+                      {...register(id)}
                       accept={accept}
+                      className="mt-1 border border-orange-1000 rounded-md p-2"
                       placeholder={placeholder}
-                      {...register(id, {
-                        required: true,
-                      })}
-                      className="w-full p-2 mt-1 border border-orange-1000 rounded-md"
-                      onChange={(e) => {
-                        const file = e.target.files?.[0];
-                        if (file && !validateFile(file, accept.slice(1))) {
-                          e.target.value = ''; // Clear the input if file validation fails
-                        }
-                      }}
+                      required
                     />
-                    <p className="text-sm text-orange-80">{placeholder}</p>
                   </div>
                 ))}
 
-                <button type="submit" className="w-full p-2 mt-4 font-semibold text-white bg-[#d86c16] hover:bg-[#442c19] rounded-md transition-colors">
+                <button
+                  type="submit"
+                  className="w-full bg-blue-1000 text-white font-bold py-2 px-4 rounded hover:bg-blue-800"
+                >
                   Daftar
                 </button>
               </form>
             )}
           </div>
         </main>
+
+        {/* Modal for Success Message */}
+        {modalOpen && (
+          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center items-center">
+            <div className="bg-white rounded-lg p-6 w-11/12 md:w-1/3 flex flex-col">
+              <h2 className="text-lg font-bold mb-4">Pendaftaran Berhasil</h2>
+              <p className="text-justify my-4">
+                Terima kasih telah mendaftar melalui website ini. Untuk mengetahui hasil lamaran, anda dapat melakukan cek status permohonan secara berkala melalui menu <strong>"Permohonan Saya"</strong>. 
+                Untuk informasi lebih lanjut terkait sistem magang, dapat menghubungi narahubung di bawah ini:
+              </p>
+              <span>0857-2667-2212 (Satria Dirgantara - multimedia)</span>
+              <button
+                onClick={handleCloseModal}
+                className="mt-4 bg-blue-1000 text-white font-bold py-2 px-4 rounded hover:bg-blue-800"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        )}
       </section>
     </div>
   );
