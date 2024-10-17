@@ -241,7 +241,7 @@ const Register: React.FC = () => {
             <div className="bg-white rounded-lg p-6 w-11/12 md:w-1/3 flex flex-col">
               <h2 className="text-lg font-bold mb-4">Pendaftaran Berhasil</h2>
               <p className="text-justify my-4">
-                Terima kasih telah mendaftar melalui website ini. Untuk mengetahui hasil lamaran, anda dapat melakukan cek status permohonan secara berkala melalui menu <strong>"Permohonan Saya"</strong>. 
+                Terima kasih telah mendaftar melalui website ini. Untuk mengetahui hasil lamaran, anda dapat melakukan cek status permohonan secara berkala melalui menu <strong>Permohonan Saya</strong>. 
                 Untuk informasi lebih lanjut terkait sistem magang, dapat menghubungi narahubung di bawah ini:
               </p>
               <span>0857-2667-2212 (Satria Dirgantara - multimedia)</span>
