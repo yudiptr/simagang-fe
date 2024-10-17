@@ -118,7 +118,13 @@ const Register: React.FC = () => {
       }
     } catch (error) {
       console.error('Error during registration:', error);
-      enqueueSnackbar('An unexpected error occurred. Please try again.', { variant: 'error' });
+      let errorMessage = 'An unexpected error occurred. Please try again.';
+
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+
+      enqueueSnackbar(errorMessage, { variant: 'error' });
     } finally {
       setLoading(false); // Stop loading
     }
